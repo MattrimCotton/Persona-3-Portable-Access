@@ -1,0 +1,25 @@
+{
+  "ModId": "p3ppc.accessibility",
+  "ModName": "P3P Access",
+  "ModAuthor": "MattrimCotton (based on Persona 4 Golden Access by Haru and AnimatedSwine37)",
+  "ModVersion": "0.1.0",
+  "ModDescription": "Screen reader accessibility for Persona 3 Portable (NVDA via Tolk).",
+  "ModDll": "p3ppc.accessibility.dll",
+  "ModIcon": "",
+  "ModR2RManagedDll32": "x86/p3ppc.accessibility.dll",
+  "ModR2RManagedDll64": "x64/p3ppc.accessibility.dll",
+  "ModNativeDll32": "",
+  "ModNativeDll64": "",
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "p3ppc.accessibility.ReleaseMetadata.json",
+  "PluginData": {},
+  "IsUniversalMod": false,
+  "ModDependencies": [
+    "reloaded.sharedlib.hooks",
+    "Reloaded.Memory.SigScan.ReloadedII",
+    "p5rpc.modloader"
+  ],
+  "OptionalDependencies": [],
+  "SupportedAppId": ["p3p.exe"],
+  "ProjectUrl": ""
+}

@@ -1,0 +1,44 @@
+# Build outputs
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+.vscode/
+
+# NuGet
+packages/
+*.nupkg
+
+# Decompiled / extracted game files (copyrighted and too large for git)
+decompiled/
+extracted/
+
+# Memory snapshots
+*.snap
+*.npy
+
+# Logs
+*.log
+log.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code: personal settings and hook state
+.claude/settings.local.json
+.claude/.claude-md-checked
+
+# Tolk et pilotes des lecteurs d'écran : versionnés (nécessaires à la compilation)
+!lib/tolk/*.dll
+
+# Python
+__pycache__/

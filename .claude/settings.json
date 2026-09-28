@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "RELOADEDIIMODS": "D:\\SteamLibrary\\Reloaded-II\\Mods",
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(dotnet *)",
+      "Bash(git *)",
+      "Bash(python *)",
+      "PowerShell(dotnet *)",
+      "PowerShell(git *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:personamodding.com)",
+      "WebFetch(domain:reloaded-project.github.io)"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(rm -rf D:/SteamLibrary/steamapps/*)",
+      "PowerShell(Remove-Item D:\\SteamLibrary\\steamapps\\*)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\asdes.ASUS\\Documents\\SourceCode\\Persona-4-Golden-Access",
+      "D:\\SteamLibrary\\Reloaded-II",
+      "D:\\SteamLibrary\\steamapps\\common\\P3P"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/.claude/hooks/session-context.ps1\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/.claude/hooks/claude-md-check.ps1\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

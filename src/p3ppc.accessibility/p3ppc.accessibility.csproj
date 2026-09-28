@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <LangVersion>10.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <OutputPath>$(RELOADEDIIMODS)/p3ppc.accessibility</OutputPath>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ReloadedILLink>false</ReloadedILLink>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ReloadedLinkRoots Include="p3ppc.accessibility" />
+  </ItemGroup>
+
+  <Import Project="Reloaded.Trimming.targets" />
+  <Import Project="Reloaded.Checks.targets" />
+
+  <ItemGroup>
+    <None Remove="ModConfig.json" />
+    <None Remove="Reloaded.Trimming.targets" />
+    <None Remove="Reloaded.Checks.targets" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ModConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <!-- Tables de glyphes Atlus (Atlus Script Tools), copiées à plat dans le dossier du mod. -->
+    <Content Include="Charsets\*.tsv">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <!-- Tolk + pilotes des lecteurs d'écran, copiés à plat. -->
+    <Content Include="..\..\lib\tolk\*.dll">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Reloaded.Memory" Version="9.4.1" />
+    <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.3.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Reloaded.SharedLib.Hooks" Version="1.9.0" />
+    <PackageReference Include="Reloaded.Memory.SigScan.ReloadedII.Interfaces" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TolkDotNet">
+      <HintPath>..\..\lib\tolk\TolkDotNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

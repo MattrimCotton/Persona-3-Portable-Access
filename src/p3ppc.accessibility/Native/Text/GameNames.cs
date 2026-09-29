@@ -13,7 +13,7 @@ namespace p3ppc.accessibility.Native.Text;
 /// </summary>
 internal static class GameNames
 {
-    private static GetNameDelegate? _item, _skill, _character, _socialLink;
+    private static GetNameDelegate? _item, _skill, _character, _socialLink, _persona;
     private static GetEquippedDelegate? _equipped;
 
     internal static void Init(IReloadedHooks hooks)
@@ -28,6 +28,9 @@ internal static class GameNames
         // GetSLinkName (AnimatedSwine37): social link name, in the .arch section (plain bytes, callable).
         SigScan("48 89 5C 24 ?? 57 48 83 EC 20 0F B7 D9 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8B 3D ?? ?? ?? ?? 3B 5F ?? 72 ?? 8B 15 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? 83 C2 02 E8 ?? ?? ?? ?? C1 E3 06 48 83 C7 08 89 D8",
             "GetSLinkName", address => _socialLink = hooks.CreateWrapper<GetNameDelegate>(address, out _));
+        // GetPersonaName (battle/data/datpersona.c): target of the call in the Persona screen row.
+        SigScan("41 0F B7 4D 02 48 6B D8 64 E8", "GetPersonaName call",
+            address => _persona = hooks.CreateWrapper<GetNameDelegate>(GetGlobalAddress(address + 10), out _));
         // Equip screen: GetEquipped(character, slot) call.
         SigScan("41 0F B7 D4 41 0F B7 CF E8 ?? ?? ?? ?? B9 FF FF FF FF 66 89 45 A0 66 89 4D A2", "GetEquipped call",
             address => _equipped = hooks.CreateWrapper<GetEquippedDelegate>(GetGlobalAddress(address + 9), out _));
@@ -47,6 +50,10 @@ internal static class GameNames
     /// <summary>Name of the person of a social link (by social link id).</summary>
     internal static string? SocialLink(int id)
         => _socialLink == null || id <= 0 || id > 64 ? null : GameStrings.ReadGameString(_socialLink((short)id), 64);
+
+    /// <summary>Persona names are fixed-width records (0x15 in European languages, 0x11 otherwise).</summary>
+    internal static string? Persona(int id)
+        => _persona == null || id <= 0 || id > 0xFF ? null : GameStrings.ReadGameString(_persona((short)id), 0x15);
 
     /// <summary>Item id equipped by a party member in a slot (0-3), or null.</summary>
     internal static int? Equipped(int character, int slot)

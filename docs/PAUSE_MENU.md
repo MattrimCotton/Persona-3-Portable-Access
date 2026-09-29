@@ -85,7 +85,18 @@ du jeu `GetHardcodedText(44 + curseur)`.
 - Annonce : « Liens sociaux. Le Magicien, Kenji Tomochika, rang 2, 1 sur 5 ».
 - Pas encore : fiche détaillée du lien (texte d'aide, progression +0x08).
 
+## Persona (`PersonaMenu.cs`)
+
+- `Persona::DrawRow(travail, ligne)` `0x1401497E0` (`cmppersona.c`), une ligne de la réserve
+  du héros. Travail : +0x50 nombre, +0x54 curseur, +0x38 + i × 2 emplacement dans la réserve.
+- Fiche : `GetStockPersona(emplacement)` (`0x1402649B0`, saut vers `.arch`) : +0x02 numéro de
+  Persona, +0x04 niveau (octet). Nom : `GetPersonaName(numéro)` `0x140263450`
+  (`battle\data\datpersona.c`, fiche de 0x15 octets en français, 0x11 sinon).
+- Annonce : « Persona. Orphée, niveau 1, 1 sur 3 ».
+- Pas encore : fiche détaillée (caractéristiques, affinités, compétences : les lignes de
+  compétences de sorte 0 et 2 ne sont pas lues par `SkillRows`), panneaux `shared\shdpersona.c`.
+
 ## À faire
 
-Persona (`cmppersona.c`, `shared\shdpersona.c`), calendrier (`cmpcalendar.c`), système (`cmpsystem.c` : état, quêtes, glossaire, config, effacer,
+Calendrier (`cmpcalendar.c`), système (`cmpsystem.c` : état, quêtes, glossaire, config, effacer,
 charger, titre ; textes `GetHardcodedText(59…65)`), noms des personnages `0x14025AD20`.

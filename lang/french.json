@@ -90,5 +90,8 @@
   "social_stat_level": "{0} : niveau {1}",
   "social_stat_unknown": "Caractéristique sociale {0}",
   "social_link_menu": "Liens sociaux",
-  "social_link_rank": "rang {0}"
+  "social_link_rank": "rang {0}",
+  "persona_menu": "Persona",
+  "persona_level": "niveau {0}",
+  "persona_unknown": "Persona {0}"
 }

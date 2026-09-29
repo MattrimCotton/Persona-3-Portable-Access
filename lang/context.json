@@ -72,5 +72,12 @@
   "config_row": "Settings screen: fallback when the game's label of a setting cannot be read. {0} = row number.",
   "item_with_count": "Item list (pause menu Item screen): selected item then how many the party owns. {0} = item name, {1} = quantity.",
   "item_unknown": "Item list: fallback when the game's item name cannot be read. {0} = item number.",
-  "skill_unknown": "Skill list: fallback when the game's skill name cannot be read. {0} = skill number."
+  "skill_unknown": "Skill list: fallback when the game's skill name cannot be read. {0} = skill number.",
+  "equip_menu": "Spoken when the pause menu Equip screen opens.",
+  "equip_weapon": "Equip screen: weapon slot.",
+  "equip_armor": "Equip screen: body armor slot.",
+  "equip_feet": "Equip screen: footwear slot.",
+  "equip_accessory": "Equip screen: accessory slot.",
+  "equip_none": "Equip screen: the slot is empty.",
+  "character_unknown": "Fallback when the game's character name cannot be read. {0} = character number."
 }

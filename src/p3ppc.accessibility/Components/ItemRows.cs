@@ -16,7 +16,6 @@ namespace p3ppc.accessibility.Components;
 internal class ItemRows
 {
     private IHook<DrawRowDelegate>? _hook;
-    private GetNameDelegate? _getName;
     private int _lastKey = -1;
     private long _lastSeen;
 
@@ -26,11 +25,6 @@ internal class ItemRows
             "Item::DrawRow", address =>
             {
                 _hook = hooks.CreateHook<DrawRowDelegate>(DrawRow, address - 0x3F).Activate();
-            });
-        SigScan("E8 ?? ?? ?? ?? 48 8D 15 ?? ?? ?? ?? 48 8B C8 0F B6 84",
-            "GetItemName call", address =>
-            {
-                _getName = hooks.CreateWrapper<GetNameDelegate>(GetGlobalAddress(address + 1), out _);
             });
     }
 
@@ -54,7 +48,7 @@ internal class ItemRows
         if (!reopened && key == _lastKey) return;
         _lastKey = key;
 
-        string name = _getName != null ? GameStrings.ReadGameString(_getName(id), 100) ?? "" : "";
+        string name = GameNames.Item(id) ?? "";
         if (name.Length == 0) name = Loc.F("item_unknown", id);
         string text = count >= 0 ? Loc.F("item_with_count", name, count) : name;
         LogDebug($"[ItemRows] item {id} count {count}");
@@ -62,5 +56,4 @@ internal class ItemRows
     }
 
     private delegate void DrawRowDelegate(long position, int a2, byte alpha, nint row);
-    private delegate nint GetNameDelegate(short id);
 }

@@ -78,5 +78,12 @@
   "config_row": "Réglage {0}",
   "item_with_count": "{0}, {1} en stock",
   "item_unknown": "Objet {0}",
-  "skill_unknown": "Compétence {0}"
+  "skill_unknown": "Compétence {0}",
+  "equip_menu": "Équipement",
+  "equip_weapon": "Arme",
+  "equip_armor": "Armure",
+  "equip_feet": "Chaussures",
+  "equip_accessory": "Accessoire",
+  "equip_none": "rien d'équipé",
+  "character_unknown": "Personnage {0}"
 }

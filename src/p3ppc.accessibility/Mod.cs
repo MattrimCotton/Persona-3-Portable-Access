@@ -36,6 +36,7 @@ public class Mod : ModBase // <= Do not Remove.
     private ConfigMenu? _configMenu;
     private ItemRows? _itemRows;
     private SkillRows? _skillRows;
+    private EquipMenu? _equipMenu;
     private HistoryKeys? _historyKeys;
 
     public Mod(ModContext context)
@@ -77,6 +78,7 @@ public class Mod : ModBase // <= Do not Remove.
         Speech.Say(Loc.T("loaded"), true);
 
         GameStrings.Init(_hooks!);
+        GameNames.Init(_hooks!);
         _titleBar = new TitleBar(_hooks!);
         _dialogue = new Dialogue(_hooks!);
         _sexSelect = new SexSelectMenu(_hooks!);
@@ -90,6 +92,7 @@ public class Mod : ModBase // <= Do not Remove.
         _configMenu = new ConfigMenu(_hooks!);
         _itemRows = new ItemRows(_hooks!);
         _skillRows = new SkillRows(_hooks!);
+        _equipMenu = new EquipMenu(_hooks!);
         _historyKeys = new HistoryKeys();
     }
 

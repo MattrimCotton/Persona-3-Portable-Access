@@ -18,7 +18,6 @@ namespace p3ppc.accessibility.Components;
 internal class SkillRows
 {
     private IHook<DrawRowDelegate>? _hook;
-    private GetNameDelegate? _getName;
     private int _lastId = -1;
     private long _lastSeen;
 
@@ -28,11 +27,6 @@ internal class SkillRows
             "Skill::DrawRow", address =>
             {
                 _hook = hooks.CreateHook<DrawRowDelegate>(DrawRow, address).Activate();
-            });
-        SigScan("40 53 48 83 EC 20 0F B7 D9 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? B8 70 02 00 00 66 3B D8 72 14 8B 15 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? FF C2 E8 ?? ?? ?? ?? 8B 05 ?? ?? ?? ?? 83 F8 03",
-            "GetSkillName", address =>
-            {
-                _getName = hooks.CreateWrapper<GetNameDelegate>(address, out _);
             });
     }
 
@@ -55,13 +49,11 @@ internal class SkillRows
         if (!reopened && id == _lastId) return;
         _lastId = id;
 
-        // Record width 0x1D (0x13 in some languages), zero-padded.
-        string name = _getName != null ? GameStrings.ReadGameString(_getName(id), 0x1D) ?? "" : "";
+        string name = GameNames.Skill(id) ?? "";
         if (name.Length == 0) name = Loc.F("skill_unknown", id);
         LogDebug($"[SkillRows] skill {id}");
         Speech.Say(name, true);
     }
 
     private delegate void DrawRowDelegate(long position, float a2, byte alpha, nint row, long a5, float a6);
-    private delegate nint GetNameDelegate(ushort id);
 }

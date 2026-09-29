@@ -49,10 +49,23 @@ du jeu `GetHardcodedText(44 + curseur)`.
   (0x1D en français, 0x13 dans d'autres langues).
 - Pas encore : coût en PS/PV, description, lignes de sorte 0 et 2 (panneaux de Persona).
 
+## Équipement (`EquipMenu.cs`)
+
+- `Equip::Draw(travail)` `0x1401292F0` (`cmpequip.c`), chaque image. Travail : +0x3C membre
+  choisi (indice), +0x52 + i × 2 numéros de personnage, +0x28 drapeaux (0x20 = choix de
+  l'emplacement), +0x3E emplacement 0-3.
+- Objet équipé : `GetEquipped(personnage, emplacement)` (`0x140259760`, saut vers `.arch`),
+  appelée par ce même dessin ; nom par `GetItemName`, personnage par `GetCharacterName`.
+- Annonce : « Équipement. Yuki Makoto » puis, sur un emplacement, « Arme : Épée courte, 1 sur 4 ».
+- **Ordre des emplacements à vérifier** : le code dessine des icônes (0 = selon l'arme, puis
+  icônes 0x23, 0x24, 0x25). Ordre supposé : arme, armure, chaussures, accessoire (celui de
+  P3 FES). Le nom de l'objet annoncé permet de repérer une erreur.
+- Pas encore : liste des équipements proposés (`0x14012DC20`, `0x14012E910`, `0x14012EA20`) et
+  comparaison des caractéristiques.
+
 ## À faire
 
-Équipement (`cmpequip.c`, dessin `0x1401292F0` : emplacements arme / armure / accessoire, noms
-par `GetItemName`), Persona (`cmppersona.c`, `shared\shdpersona.c`), statut (`cmpstatus.c`),
+Persona (`cmppersona.c`, `shared\shdpersona.c`), statut (`cmpstatus.c`),
 liens sociaux (`cmpcommu.c`, noms : `GetSLinkName` de p3ppc.unhardcodedNames, dans `.arch`),
 calendrier (`cmpcalendar.c`), système (`cmpsystem.c` : état, quêtes, glossaire, config, effacer,
 charger, titre ; textes `GetHardcodedText(59…65)`), noms des personnages `0x14025AD20`.

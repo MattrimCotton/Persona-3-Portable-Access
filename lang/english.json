@@ -78,5 +78,12 @@
   "config_row": "Setting {0}",
   "item_with_count": "{0}, {1} owned",
   "item_unknown": "Item {0}",
-  "skill_unknown": "Skill {0}"
+  "skill_unknown": "Skill {0}",
+  "equip_menu": "Equip",
+  "equip_weapon": "Weapon",
+  "equip_armor": "Armor",
+  "equip_feet": "Footwear",
+  "equip_accessory": "Accessory",
+  "equip_none": "nothing equipped",
+  "character_unknown": "Character {0}"
 }

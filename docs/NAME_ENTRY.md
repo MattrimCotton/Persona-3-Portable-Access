@@ -65,7 +65,8 @@ lettres accentuées (Â À É È Ê Î Œ Ç â à ä é è ê ë ï î ü û ù
   l'indicateur **IsFemc** du jeu (`0x143387510`, signature de `p3ppc.visibleRankupReady`
   d'AnimatedSwine37 : `48 8D 35 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??`, global = opérande de
   l'instruction précédente). La fonction du jeu qui enregistre le sexe (`0x14025DF80`, appelée à
-  la confirmation du choix) est chiffrée : illisible. Déroulement : à l'ouverture, le mod écrit les deux noms, puis met
+  la confirmation du choix) saute dans la section `.arch`, crue chiffrée à l'époque ; elle est
+  en fait lisible avec `gh.sh decomp-full` (`GHIDRA.md`, correction du 29/09/2026). Déroulement : à l'ouverture, le mod écrit les deux noms, puis met
   le bit Start pendant au plus 60 images jusqu'au mode 3. Sinon : « Noms remplis. Appuyez sur
   Start pour signer. » La confirmation du jeu reste à valider par le joueur.
 

@@ -12,7 +12,9 @@ Au début d'une session, lire [docs/HANDOFF.md](docs/HANDOFF.md) (point de repri
 [docs/ROADMAP.md](docs/ROADMAP.md) (fait / en cours / à venir, diagramme). **À la fin de chaque
 session, mettre à jour `HANDOFF.md`** (date, agent, fait, prochaine action) et `ROADMAP.md` si une
 tâche change d'état. Codex lit [AGENTS.md](AGENTS.md), qui renvoie ici : y reporter toute règle
-nouvelle qui vaut aussi pour lui.
+nouvelle qui vaut aussi pour lui. Historique des appels Codex : `~/.codex/sessions/<date>/*.jsonl`
+(à lire pour vérifier ce qu'a fait Codex). Un hook PostToolUse auto-édite `CLAUDE.md` après Write/Edit :
+en relire la formulation, il peut surenchere le statut.
 
 ## État actuel
 
@@ -48,7 +50,7 @@ nouvelle qui vaut aussi pour lui.
     (`PersonaMenu.cs`), Système (`CampSystemMenu.cs`). Reste : calendrier, quêtes, glossaire,
     fiches détaillées (Persona, lien social, objet), liste des équipements. Noms tirés du jeu :
     `Native/Text/GameNames.cs` (objets, compétences, Persona, personnages, liens sociaux).
-  - **Ghidra** (29/09/2026) : projet analysé de P3P.exe (sans la section chiffrée `.arch`), décompilation en une commande : `sh tools/re/ghidra/gh.sh decomp|xrefs SORTIE ADRESSES` (doc : `docs/GHIDRA.md`). Une partie du code des menus est dans `.arch` (illisible).
+  - **Ghidra** (29/09/2026) : découverte majeure — la section `.arch` de 400 Mo n'est **pas chiffrée**, son code est en clair (juste énorme). Deux projets à `C:\Users\asdes.ASUS\Tools\ghidra_work` : projet analysé de P3P_noarch.exe (~25 min, une fois) pour les références et types du code principal, et projet complet de P3P.exe pour décompiler à la demande n'importe quelle fonction (analyse ~2 min). Commandes : `sh tools/re/ghidra/gh.sh decomp|xrefs|decomp-full SORTIE ADRESSES` (~8 à 15 s/appel, doc : `docs/GHIDRA.md`). Une partie du code des menus est dans `.arch` (0x1436CA000 et +, accessible via `decomp-full`).
   - Déjà en place : parole et historique (`Speech.cs`, Maj+P répéter, Maj+[ / Maj+] historique,
     Maj+M couper les dialogues, dans `HistoryKeys.cs`), contrôle manette (`ControllerInput.cs`,
     LT + RT modifier pour les mêmes fonctions, voir `docs/CONTROLLER.md`), messages du mod en FR/EN

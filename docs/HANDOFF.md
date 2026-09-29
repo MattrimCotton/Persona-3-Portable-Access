@@ -113,8 +113,11 @@
   de `CampMenu`, `GameStrings`, `TextCapture`, `SaveSlots`, `ConfigMenu` ajoutées à
   `SIGNATURES.md` (unicité contrôlée).
 - Constat : les sous-menus du menu pause créent leurs tâches et fenêtres depuis la section
-  chiffrée `.arch` ; leurs fonctions de dessin restent lisibles (liste des fonctions par module
+  `.arch` ; leurs fonctions de dessin sont dans le code principal (liste des fonctions par module
   obtenue avec `gh.sh xrefs` sur les chemins `src\camp\*.c`).
+- **Correction (même soir)** : `.arch` n'est **pas chiffrée**, seulement énorme. Second projet
+  Ghidra complet non analysé et commande `gh.sh decomp-full` pour en décompiler n'importe quelle
+  fonction (`GHIDRA.md`). Les mentions « chiffrée » ont été corrigées dans les docs et le code.
 - Le joueur est au début du jeu : le vrai menu pause n'y est pas encore disponible. Le lot
   testable tout de suite = écran titre → Config / Charger, menu des commandes → Config /
   Charger / Sauvegarde rapide / Écran titre.

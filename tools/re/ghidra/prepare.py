@@ -1,4 +1,4 @@
-"""Prépare une copie de P3P.exe analysable par Ghidra : la section chiffrée .arch (400 Mo) est
+"""Prépare une copie de P3P.exe analysable par Ghidra : la section .arch (400 Mo, en clair mais trop grosse pour une analyse complète) est
 déclarée vide et non exécutable, les autres sections gardent leurs octets et leurs adresses.
 
 Usage : python tools/re/ghidra/prepare.py [--exe CHEMIN] [--out DOSSIER]

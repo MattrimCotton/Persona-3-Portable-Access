@@ -7,8 +7,9 @@ est au début du jeu, le menu pause complet n'y est pas encore ouvert.
 ## Constat d'ensemble
 
 - Modules `src\camp\cmp*.c` (liste des fonctions par module : `gh.sh xrefs` sur les chemins).
-- Les tâches des sous-menus sont créées par du code de `.arch` (chiffré), mais leurs fonctions de
-  dessin, lisibles, reçoivent la structure de travail : on les accroche.
+- Les tâches des sous-menus sont créées par du code de `.arch` (en clair, non analysé
+  automatiquement : `gh.sh decomp-full`, voir `GHIDRA.md`) ; leurs fonctions de dessin, dans le
+  code principal, reçoivent la structure de travail : on les accroche.
 - Les lignes de liste passent par des fonctions **partagées** qui reçoivent une petite structure
   « ligne » avec un état « sous le curseur » : un lecteur par fonction partagée couvre tous les
   écrans qui l'utilisent.

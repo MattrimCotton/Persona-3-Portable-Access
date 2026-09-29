@@ -11,7 +11,7 @@ namespace p3ppc.accessibility.Components;
 /// Found 29/09/2026 with Ghidra: DrawItemRow(position, int, alpha, row) 0x1402AD4F0 draws one
 /// visible row. Row (shorts): +0x00 item id, +0x02 quantity (-1 = none), +0x16 state (1 = the
 /// row under the cursor). The name comes from GetItemName(id) (call found by AnimatedSwine37's
-/// p3ppc.unhardcodedNames; the function itself is in the encrypted .arch section, callable).
+/// p3ppc.unhardcodedNames; a jump into the .arch section: plain code, callable).
 /// </summary>
 internal class ItemRows
 {

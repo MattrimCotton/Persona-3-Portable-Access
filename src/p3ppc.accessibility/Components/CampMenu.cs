@@ -8,7 +8,7 @@ namespace p3ppc.accessibility.Components;
 /// Pause menu ("camp") main list: Skill, Item, Persona, Equip, Status, Social link, System.
 /// See docs/MENUS.md.
 ///
-/// Found 29/09/2026 (camp\cmproot.c): the camp's task is created from the encrypted part of the
+/// Found 29/09/2026 (camp\cmproot.c): the camp's task is created from the .arch section of the
 /// exe, so we hook the root DRAW function (0x14014B350, rcx = work struct), called every frame
 /// while the menu is shown. Work +0x20 = cursor 0-6: the draw asks the help line
 /// GetHardcodedText(44 + cursor) ("Utiliser des compétences"…), which gives the entry order.

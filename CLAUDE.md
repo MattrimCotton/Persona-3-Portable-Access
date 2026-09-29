@@ -37,18 +37,17 @@ nouvelle qui vaut aussi pour lui.
   - **1b (menus)** : en cours, méthode et état dans `docs/MENUS.md`. Écran titre (`TitleMenu.cs`)
     et choix du sexe / difficulté (`SexSelectMenu.cs`) **réussis au test 4** (28/09/2026). Saisie du nom (`NameEntry.cs`) **réussi au test 5** (29/09/2026) : clavier d'entrée du nom au début du jeu, variante
     européenne (FR, DE, IT, ES), annonce de la touche sous le curseur et du nom saisi. **Auto-signature** (`AutoSignContract`, activée par défaut, **partiel au test 6** (29/09/2026) : noms écrits, Start automatique corrigé ensuite, à retester) : noms selon le personnage choisi (héros **ou** héroïne, via l'indicateur `IsFemc`, `0x143387510`) = `HeroLastName`/`HeroFirstName` (Yuki / Makoto, héros) ou `HeroineLastName`/`HeroineFirstName` (Shiomi / Kotone, héroïne, défaut 2023) ; le mod écrit les deux noms et le joueur presse Start ; délai Start corrigé le 29/09/2026 (documentation complète : `docs/NAME_ENTRY.md` ; anglais et langues asiatiques non faits).
-  - **Lot du 29/09/2026** (**à tester ensemble**) : ensemble de composants compilés / compilés et déployés, tous accessibles dès le début du jeu, préparés pour validation en jeu :
-    - **Menu système** (`SystemMenu.cs`) : bouton du menu des commandes ; entrées annoncées avec leur position (doc : `docs/MENUS.md` § « Menu système du début de partie »).
-    - **Menu camp** (`CampMenu.cs`) : menu pause avec liste principale (Skill, Item, Persona, Equip, Status, Social link, System) ; annonce l'entrée courante avec sa position (doc : `docs/MENUS.md`).
-    - **Menu Config** (`ConfigMenu.cs`) : réglages PC (onglets Audio, Jeu, Graphismes, Affichage, Clavier, Manette). Lit l'onglet, le réglage sous le curseur avec sa valeur et sa ligne d'aide (textes du jeu), puis la nouvelle valeur à gauche / droite. Touches Clavier/Manette : nom de l'action seulement (doc : `docs/CONFIG.md`).
-    - **Écran Sauvegarde/Chargement** (`SaveSlots.cs`) : annonce le slot sélectionné (numéro, puis date, heure, niveau, durée, lieu… ou « AUCUNE DONNÉE »). Accroche `DrawSlot` (0x140270770) via signature ; collecte les textes avec `TextCapture` pendant le dessin du jeu (doc : `docs/SAVE_LOAD.md`).
-    - **Écran Équipement** (`EquipMenu.cs`) : écran pause Équip (camp\cmpequip.c) annonce le personnage équipé, puis l'emplacement sous le curseur et l'objet équipé. Hook `Draw` (0x1401292F0 − 0x64) sur la fonction de dessin (doc : `docs/PAUSE_MENU.md`).
-    - **Statistiques sociales** (`SocialStats.cs`) : panneau des stats sociales (Savoir/Academics, Charme/Charm, Courage/Courage) à l'écran pause Status, annonce les rangs quand le panneau apparaît ou qu'un rang change (doc : `docs/PAUSE_MENU.md`).
-    - **Écran Liens sociaux** (`SocialLinkMenu.cs`) : écran pause Liens sociaux (camp\cmpcommu.c) annonce l'arcane, le personnage et le rang du lien sous le curseur, ainsi que sa position. Hook `Draw` (0x14011AE80 − 0x4B) sur la fonction de dessin (doc : `docs/PAUSE_MENU.md`).
-    - **Écran Persona** (`PersonaMenu.cs`) : écran pause Persona (camp\cmppersona.c) annonce une ligne de la réserve du héros (nom du Persona, niveau, position). Hook `DrawRow` (0x1401497E0) sur la fonction de dessin d'une ligne (doc : `docs/PAUSE_MENU.md`).
-    - **Sous-menu Système du camp** (`CampSystemMenu.cs`) : sous-menu du pause (camp\cmpsystem.c : Quest, Glossary, Config, Difficulty, Quick Save, Delete, Load, Title screen, Quit). Annonce l'entrée sous le curseur avec sa ligne d'aide. Hook `Draw` (0x14015A150) sur la fonction de dessin (doc : `docs/PAUSE_MENU.md`).
-    - **Capture de texte** (`TextCapture.cs`) : intercepte les six variantes de `DrawText` du jeu pour lire les menus sans décoder les données. Inclut **TextSpy** (mode débogage) : F9 enregistre les textes dessinés pendant 20 s. Détail : `docs/TEXT_CAPTURE.md`.
-    - **Manette** (`ControllerInput.cs`) : LT + RT pour la parole/historique/muet, croix haut pour répéter (doc : `docs/CONTROLLER.md`).
+  - **Lot du 29/09/2026 : compilé et déployé, rien testé en jeu.** Accessibles dès le début du
+    jeu (test proposé, voir `docs/HANDOFF.md`) : menu des commandes (`SystemMenu.cs`, doc
+    `MENUS.md`), **Config** (`ConfigMenu.cs`, `CONFIG.md`), **Sauvegarde / Chargement**
+    (`SaveSlots.cs`, `SAVE_LOAD.md`), manette (`ControllerInput.cs`, `CONTROLLER.md`), capture de
+    texte (`TextCapture.cs` + TextSpy F9, `TEXT_CAPTURE.md`).
+    **Menu pause** (29/09/2026, doc `PAUSE_MENU.md`) : racine (`CampMenu.cs`), Objets
+    (`ItemRows.cs`), Compétences (`SkillRows.cs`), Équipement (`EquipMenu.cs`), Statut —
+    caractéristiques sociales (`SocialStats.cs`), Liens sociaux (`SocialLinkMenu.cs`), Persona
+    (`PersonaMenu.cs`), Système (`CampSystemMenu.cs`). Reste : calendrier, quêtes, glossaire,
+    fiches détaillées (Persona, lien social, objet), liste des équipements. Noms tirés du jeu :
+    `Native/Text/GameNames.cs` (objets, compétences, Persona, personnages, liens sociaux).
   - **Ghidra** (29/09/2026) : projet analysé de P3P.exe (sans la section chiffrée `.arch`), décompilation en une commande : `sh tools/re/ghidra/gh.sh decomp|xrefs SORTIE ADRESSES` (doc : `docs/GHIDRA.md`). Une partie du code des menus est dans `.arch` (illisible).
   - Déjà en place : parole et historique (`Speech.cs`, Maj+P répéter, Maj+[ / Maj+] historique,
     Maj+M couper les dialogues, dans `HistoryKeys.cs`), contrôle manette (`ControllerInput.cs`,

@@ -118,8 +118,37 @@
 - Le joueur est au début du jeu : le vrai menu pause n'y est pas encore disponible. Le lot
   testable tout de suite = écran titre → Config / Charger, menu des commandes → Config /
   Charger / Sauvegarde rapide / Écran titre.
+- Suite de la même session : sous-menus du menu pause écrits (doc `PAUSE_MENU.md`) :
+  Objets (`ItemRows`), Compétences (`SkillRows`), Équipement (`EquipMenu`), caractéristiques
+  sociales de l'écran Statut (`SocialStats`), Liens sociaux (`SocialLinkMenu`), Persona
+  (`PersonaMenu`), Système (`CampSystemMenu`). Noms tirés du jeu (`Native/Text/GameNames.cs` :
+  objets, compétences, Persona, personnages, liens sociaux, objet équipé). **Compilés et
+  déployés, aucun testé.**
+- **Défaut corrigé avant tout test** : l'accroche de `DrawText` (capture de texte) ne transmettait
+  que 8 des 9 à 11 arguments ; le 9e est un pointeur de sortie écrit par le jeu → risque de
+  plantage. Nouvelle règle dans `CLAUDE.md` / `AGENTS.md` (« Accroche = tous les arguments »).
+  Toutes les autres accroches revérifiées avec Ghidra.
+- Accroche du saut vers le texte « resserré » (`0x140232DC0`) essayée puis retirée : octets de
+  protection juste après, qu'une accroche longue écraserait.
+- Pas faits : date et heure (dessinées par `.arch`), calendrier, quêtes, glossaire, écran Statut
+  complet, fiches détaillées, liste des équipements proposés, descriptions d'objets.
 
 ## Prochaine action
+
+**Test regroupé proposé au joueur (29/09/2026, Claude Code)**, tout accessible dès le début :
+
+1. Écran titre → Config : onglets (touches d'onglet), lignes, valeurs gauche / droite, aide.
+   Quitter le Config (la fenêtre « Enregistrer les modifications ? » est-elle lue ?).
+2. Écran titre → Charger : emplacements (« Emplacement 1… »), question « Charger ce fichier ? ».
+3. En jeu, menu des commandes (`SystemMenu`) : entrées, Config, Sauvegarde rapide.
+4. Manette : LT + RT + croix (répéter, historique, dialogues).
+5. Si possible, F9 (TextSpy, mode débogage) sur la fenêtre de fin du Config et l'écran de
+   sauvegarde, pour les textes non encore lus.
+
+Le menu pause complet (objets, compétences, équipement, statut, liens sociaux, Persona,
+système) sera testé quand le jeu l'aura ouvert. À la prochaine session sans test : date et heure,
+calendrier, quêtes, glossaire, fiches détaillées ; puis l'audiodescription de l'ouverture
+(demande du joueur mise en attente, voir mémoire du projet).
 
 Dernière précision du joueur (29/09/2026, consignée par Codex) : il ne peut pas tester
 chaque petite avancée. Développer des lots substantiels et faire les contrôles techniques

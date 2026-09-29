@@ -71,6 +71,9 @@ Pièges vécus, détail dans [docs/SHELL_PITFALLS.md](docs/SHELL_PITFALLS.md) :
 - Journal du jeu : `pwsh -NoProfile -File tools/checklog.ps1`.
 - Signatures plutôt qu'adresses, toutes notées dans `docs/SIGNATURES.md`.
 - Lectures mémoire toujours gardées (`Utils.cs`) : une violation d'accès fait planter le jeu.
+- Une accroche déclare au moins tous les arguments que la fonction lit, pile comprise
+  (vérifier avec Ghidra, `docs/GHIDRA.md`) ; sinon le jeu reçoit des valeurs quelconques.
+  Leçon du 29/09/2026 : `docs/TEXT_CAPTURE.md`.
 - Hooks appelés à chaque image : ne parler que quand l'état change (sinon NVDA est coupé sans
   arrêt) ; vérifier qu'une ligne `[Speech]` n'apparaît qu'une fois dans le journal.
 - Messages du mod : jamais en dur dans le code, toujours `Loc.T` / `Loc.F`. Chaque nouvelle

@@ -23,9 +23,12 @@ Uniquement sur le fil du jeu (les fonctions de dessin y tournent). Pas d'imbrica
 ## Fonctions accrochées et arguments (corrigé le 29/09/2026)
 
 - 8 variantes de même prologue : écarts 0, 0x110, 0x2D0, 0x3E0, 0x520, 0x630, 0x890, 0x9E0 depuis
-  `0x1402320E0`, plus le saut (`jmp`) en +0xCE0 (`0x140232DC0`) vers le dessin de texte
-  « resserré » de `.arch`. Le français passe souvent par ce dernier pour les noms trop longs
-  (objets, libellés), que la capture ne voyait pas.
+  `0x1402320E0`.
+- **Non accroché** : le saut (`jmp`, 5 octets) en +0xCE0 (`0x140232DC0`) vers le dessin de texte
+  « resserré » de `.arch`, par lequel le français fait passer les noms trop longs (objets,
+  libellés). Les octets qui le suivent sont du code de protection, qu'une accroche plus longue
+  que 5 octets écraserait. Ces textes échappent donc à la capture : les lecteurs lisent les
+  numéros (objet, compétence…) et demandent le nom au jeu (`GameNames`).
 - **Jusqu'à 11 arguments** : arguments 5 à 11 sur la pile (`[rsp+0xA0]` à `[rsp+0xD0]` dans
   les variantes). Le 9e et le 10e sont des pointeurs de sortie facultatifs : la première variante
   écrit la largeur du texte dans `*arg9` s'il n'est pas nul. La première version de l'accroche ne

@@ -89,9 +89,10 @@ version simplifiée du menu pause, tâche `cmpSimpleSystem` (`camp\cmpsimplesyst
 
 ## À faire
 
-Menu pause (compétences, objets, équipement, Persona, statut, liens sociaux, calendrier,
-réglages), sauvegarde / chargement, messages système, écrans de chargement, argent, date et heure.
-Saisie du nom : écrite le 29/09/2026 (`NAME_ENTRY.md`), à tester.
+Sous-menus du menu pause : voir `PAUSE_MENU.md` (écrits le 29/09/2026, à tester) ; Config :
+`CONFIG.md` ; sauvegarde / chargement : `SAVE_LOAD.md`. Reste : messages système, écrans de
+chargement, argent, date et heure (dessinées par `.arch`, module `blbrd\date\dtdraw.c`),
+calendrier, quêtes, glossaire.
 
 ## Écran muet après « Maintenant, amusez-vous bien en jouant. »
 

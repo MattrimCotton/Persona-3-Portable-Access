@@ -19,15 +19,15 @@ namespace p3ppc.accessibility.Components;
 /// text pointer = 7th argument. Up to 11 arguments: the 9th and 10th are optional OUTPUT pointers
 /// (the first variant writes the text width to *arg9), so the hooks declare and forward all
 /// 11 (forwarding stack slots a variant does not read is harmless; dropping them was not).
-/// Also hooked: two more variants (+0x890, +0x9E0, same prologue) and the thunk at +0xCE0 to
-/// the fit-to-width text drawing (in .arch; used by French names that are too long).
+/// Also hooked: two more variants (+0x890, +0x9E0, same prologue). NOT hooked: the 5-byte jump at
+/// +0xCE0 to the fit-to-width text drawing in .arch (used by long French names): the bytes after
+/// it are protection code that a longer hook jump would overwrite. Readers use ids instead.
 /// See docs/TEXT_CAPTURE.md.
 /// </summary>
 internal class TextCapture
 {
     private const int VK_F9 = 0x78;
     private static readonly int[] VariantOffsets = { 0x0, 0x110, 0x2D0, 0x3E0, 0x520, 0x630, 0x890, 0x9E0 };
-    private const int FitThunkOffset = 0xCE0; // jmp to the fit-to-width text drawing
     private const string Prologue = "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 57 48 83 EC 70 0F 29 74 24 60 48 8D 0D";
 
     private readonly List<IHook<DrawTextDelegate>> _hooks = new();
@@ -55,9 +55,7 @@ internal class TextCapture
                     if (!ok) { Log($"[TextCapture] variant 0x{va:X} does not match, skipped"); continue; }
                     AddHook(hooks, va);
                 }
-                nint fit = address + FitThunkOffset;
-                if (TryRead(fit, out byte op) && op == 0xE9) AddHook(hooks, fit);
-                else Log($"[TextCapture] fit text thunk 0x{fit:X} not found, skipped");
+
                 Log($"[TextCapture] {_hooks.Count} text draw functions hooked");
             });
         new Thread(Poll) { IsBackground = true, Name = "TextCapture" }.Start();

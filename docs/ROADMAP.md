@@ -82,12 +82,12 @@ Méthode et état détaillé : `MENUS.md`. Tâches, dans l'ordre proposé :
    `CONFIG.md`, depuis l'écran titre et le menu des commandes), écran **Sauvegarde / Chargement**
    (`SaveSlots.cs`, `SAVE_LOAD.md`), menu des commandes du début (`SystemMenu.cs`), capture de
    texte (`TEXT_CAPTURE.md`), manette. Tous accessibles dès le début du jeu.
-1. **Menu pause** (le plus gros morceau). Fait le 29/09/2026 : **menu système du début de
-   partie** (Config, Charger, Retour au titre… ; `SystemMenu.cs`, à tester), **racine du menu
-   pause** (`CampMenu.cs`, à tester), **Config** (`ConfigMenu.cs`, à tester). Reste : chaque
-   sous-menu : compétences, objets, équipement, Persona, statut, liens sociaux, calendrier,
-   système (quêtes, glossaire). Une partie de leur code est dans la section chiffrée de l'exe
-   (`GHIDRA.md`) : prévoir un relevé TextSpy (F9) en jeu quand le menu pause sera ouvert.
+1. **Menu pause** (le plus gros morceau). Écrits le 29/09/2026, **à tester** (`PAUSE_MENU.md`) :
+   menu système du début de partie (`SystemMenu.cs`), racine du menu pause (`CampMenu.cs`),
+   Config (`ConfigMenu.cs`), Objets, Compétences, Équipement, caractéristiques sociales (Statut),
+   Liens sociaux, Persona, Système. Reste : calendrier, quêtes, glossaire, reste de l'écran
+   Statut, fiches détaillées (Persona, lien social, objet), liste des équipements proposés.
+   Une partie du code est dans `.arch` (`GHIDRA.md`) : relevé TextSpy (F9) au besoin.
    Taille : grosse. Sources : mods `p3ppc.*` d'AnimatedSwine37 (menu de statut déjà accroché par
    `p3ppc.socialStatTracker`), tables de noms de `p3ppc.unhardcodedNames`.
 2. **Saisie du nom** du héros (au début du jeu) : **écrite le 29/09/2026, à tester**

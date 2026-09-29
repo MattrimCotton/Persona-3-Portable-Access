@@ -13,17 +13,14 @@
   - feuille de route `ROADMAP.md`, ce fichier, `AGENTS.md` pour Codex.
 - **Rien de déployé ni testé en jeu** pendant cette session : la dernière version testée est
   celle du test 4 (28/09/2026, réussi).
-- **Enregistré dans git** : commit `0f38cfe` (29/09/2026). Pas de dépôt distant (pas de remote).
+- **Enregistré dans git** et publié sur GitHub (dépôt public https://github.com/MattrimCotton/Persona-3-Portable-Access).
+- **Décisions du joueur** : tous les menus d'abord, puis l'étape 1c (images) ; copie publique GitHub.
 
 ## Prochaine action
 
-1. Demander au joueur les décisions en attente (fin de `ROADMAP.md`).
-2. Selon sa réponse :
-   - **1c tout de suite** : trouver la fonction de `P3P.exe` appelée par `CALL_BG_IMG` (piste dans
-     `MENUS.md`, section « Images des scènes »), annoncer l'image de l'écran muet ;
-   - **sinon** : menu pause (tâche 1 de la section « En cours » de `ROADMAP.md`). Commencer par
-     lire le code des mods `p3ppc.socialStatTracker` et `p3ppc.unhardcodedNames` sur GitHub, puis
-     la méthode de `MENUS.md`.
+**Menu pause** (tâche 1 de la section « En cours » de `ROADMAP.md`). Commencer par lire le code
+des mods `p3ppc.socialStatTracker` et `p3ppc.unhardcodedNames` sur GitHub, puis la méthode de
+`MENUS.md`. Les images de scène (1c) ne viennent qu'après la fin de tous les menus.
 
 ## Boucle de travail (identique pour tous les agents)
 

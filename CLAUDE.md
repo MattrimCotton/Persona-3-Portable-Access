@@ -34,7 +34,7 @@ nouvelle qui vaut aussi pour lui.
     (les scènes sont des images `CALL_BG_IMG`, 355 différentes). **Investigation (29/09/2026)** :
     1 774 appels `CALL_BG_IMG(a, b, c, d)` dans les scripts d'événements, images avec texte
     dans `data_FR` (`field2d/bg/bNN_*.abin`), autres probablement dans `data\umd0.cpk` / `umd1.cpk`
-    (non encore ouverts). Tâche (si validation du joueur) : trouver la fonction P3P.exe appelée,
+    (non encore ouverts). Décision du joueur (29/09/2026) : **tous les menus d'abord**, puis étape 1c (images) : trouver la fonction P3P.exe appelée,
     vérifier la correspondance numéros → fichiers, puis annoncer les descriptions au changement
     d'image avant le texte. Suite : menu pause.
   - Déjà en place : parole et historique (`Speech.cs`, Maj+P répéter, Maj+[ / Maj+] historique,
@@ -47,6 +47,7 @@ nouvelle qui vaut aussi pour lui.
 
 | Quoi | Où |
 |---|---|
+| Dépôt GitHub (public) | https://github.com/MattrimCotton/Persona-3-Portable-Access (branche `master`, pousser après chaque commit ; jamais de fichiers du jeu) |
 | Projet de référence P4G | `C:\Users\asdes.ASUS\Documents\SourceCode\Persona-4-Golden-Access` |
 | Code du mod P4G (modèle) | `...\Persona-4-Golden-Access\p4g64.accessibility-master\p4g64.accessibility` |
 | Docs techniques P4G | `...\Persona-4-Golden-Access\database\*.md` (BATTLE_SYSTEM, SNAPSHOT_METHOD, DUNGEON_*…) |

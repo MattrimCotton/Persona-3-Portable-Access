@@ -17,7 +17,7 @@ flowchart TD
     E0["Étape 0 : prérequis<br/>FAIT"]:::done
     E1a["1a : dialogues<br/>FAIT (test 3)"]:::done
     E1b["1b : tous les menus<br/>EN COURS"]:::doing
-    E1c["1c : description des images de scène<br/>PROPOSÉ, décision du joueur"]:::proposed
+    E1c["1c : description des images de scène<br/>VALIDÉ, après tous les menus"]:::proposed
     SOC["Socle P4G à porter :<br/>menu F1, sons, manette,<br/>garde transition de zone"]:::todo
     E3["3 : ville (pointer-cliquer)"]:::todo
     E4["4 : combats"]:::todo
@@ -74,17 +74,17 @@ Méthode et état détaillé : `MENUS.md`. Tâches, dans l'ordre proposé :
    moment de la journée). Taille : moyenne.
 5. **Restes de l'écran titre** : Licence, Localisation, entrée « Continuer » grisée ;
    descriptions des difficultés (`sex_select_help.bmd`). Taille : petite.
-6. **Écran muet** après « amusez-vous bien en jouant » : probablement une image fixe sans texte
-   (voir 1c). Taille : petite si on ne décrit que cette image.
+6. **Écran muet** après « amusez-vous bien en jouant » : probablement une image fixe sans texte,
+   traité avec l'étape 1c (décision du joueur, 29/09/2026).
 
-## Proposé : 1c, description des images de scène
+## Validé : 1c, description des images de scène
 
 Les scènes du jeu sont des images fixes (`CALL_BG_IMG`, 355 images différentes) avec du texte, de
 la musique et des fondus. Idée : annoncer une courte description au changement d'image, avant le
 texte (nom du lieu pour un décor courant, description plus complète pour une image d'histoire),
 avec un réglage de niveau de détail et une touche pour la réentendre. Détails et première piste
-technique : `MENUS.md`, section « Images des scènes ». **Décision du joueur en attente** : 1c
-complète après les menus, ou seulement l'image de l'écran muet tout de suite.
+technique : `MENUS.md`, section « Images des scènes ». **Décision du joueur (29/09/2026)** : 1c
+complète, **après que tous les menus sont lus** (écran muet compris).
 
 ## Socle P4G à porter (avant ou pendant la fin de 1b)
 
@@ -115,9 +115,12 @@ Code à reprendre de P4G Access, qui ne dépend pas du jeu :
 - Une mise à jour Steam peut casser signatures et adresses : tout est noté dans `SIGNATURES.md`.
 - Plantages par lecture mémoire pendant un changement de zone : garde à porter avant l'étape 3.
 - Deux protagonistes (masculin / féminin) : textes et liens différents, à tester des deux côtés.
-- Pas de copie distante du dépôt (pas de remote git) : une panne du disque ferait tout perdre.
+- Dépôt public sur GitHub (https://github.com/MattrimCotton/Persona-3-Portable-Access) : ne jamais y mettre de fichiers du jeu
+  (`extracted/`, `decompiled/`, déjà ignorés par git) ni de données personnelles.
 
-## Décisions en attente du joueur
+## Décisions du joueur
 
-1. Étape 1c : maintenant (écran muet seulement) ou après les menus (complète) ?
-2. Créer ou non un dépôt GitHub de sauvegarde (le travail est enregistré localement, commit `0f38cfe`).
+- 29/09/2026 : tous les menus d'abord, puis l'étape 1c (images) complète.
+- 29/09/2026 : copie publique sur GitHub, https://github.com/MattrimCotton/Persona-3-Portable-Access ; pousser après chaque commit.
+
+Aucune décision en attente.

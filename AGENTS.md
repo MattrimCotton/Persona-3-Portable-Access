@@ -69,4 +69,5 @@ Pièges vécus, détail dans [docs/SHELL_PITFALLS.md](docs/SHELL_PITFALLS.md) :
   arrêt) ; vérifier qu'une ligne `[Speech]` n'apparaît qu'une fois dans le journal.
 - Messages du mod uniquement dans `Loc.cs` (FR/EN).
 - Fichiers extraits du jeu (`extracted/`, `decompiled/`) : droit d'auteur, jamais versionnés.
-- git : faire un commit seulement quand le joueur le demande.
+- git : faire un commit seulement quand le joueur le demande, puis le pousser sur le dépôt public
+  https://github.com/MattrimCotton/Persona-3-Portable-Access (`git push`). Jamais de fichiers du jeu ni de données personnelles.

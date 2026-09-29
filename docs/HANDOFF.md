@@ -39,12 +39,20 @@
   automatique** (héros Yuki Makoto ou héroïne Shiomi Kotone selon IsFemc, puis Start simulé).
   **Déployé, pas encore testé.**
 
+## Session suivante (29/09/2026, Claude Code) : menu système et manette
+
+- Test 6 : signature réussie (nom réécrit à la main, Start pressé par le joueur), correction du
+  délai de Start déployée.
+- **Menu système du début de partie** (`SystemMenu.cs`, `MENUS.md`) et **manette**
+  (`ControllerInput.cs`, `CONTROLLER.md`) : déployés, **pas encore testés**.
+- Le joueur doute du déplacement : à examiner à l'étape 3 (ville).
+
 ## Prochaine action
 
-1. Test en jeu : nouvelle partie jusqu'au contrat, avec le héros puis avec l'héroïne : la
-   signature doit se faire seule, puis la confirmation du jeu doit être lue (elle devrait donner
-   l'ordre nom / prénom). Voir `NAME_ENTRY.md`.
-2. En parallèle : **menu pause** (`camp\*.c`, voir `MENUS.md`), puis sauvegarde (`memcard\*.c`),
+1. Test en jeu : menu système (bouton du menu des commandes : entrées annoncées avec leur
+   position), manette (LT + RT + croix haut : répéter), et signature automatique à la prochaine
+   nouvelle partie (héros et héroïne). Voir `MENUS.md`, `CONTROLLER.md`, `NAME_ENTRY.md`.
+2. En parallèle : **vrai menu pause** (`camp\cmproot.c`, `cmpmain.c`), puis sauvegarde (`memcard\*.c`),
    date et heure (`blbrd\date\dtdraw.c`). Lire d'abord le code des mods `p3ppc.socialStatTracker`
    et `p3ppc.unhardcodedNames` sur GitHub. Les images de scène (1c) ne viennent qu'après la fin
    de tous les menus.

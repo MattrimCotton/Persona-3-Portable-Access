@@ -51,6 +51,25 @@ Liste des menus à couvrir : `PLAN.md`, étape 1b.
 - Pas encore traité : Licence et Localisation (ouverts par d'autres touches, étapes 0x12 et 0x13),
   entrée « Continuer » grisée quand elle n'est pas disponible.
 
+## Menu système du début de partie (`SystemMenu.cs`)
+
+« Appuyez sur Menu des commandes pour accéder à Config, Charger les données et Écran titre » :
+version simplifiée du menu pause, tâche `cmpSimpleSystem` (`camp\cmpsimplesystem.c`). Écrit le
+29/09/2026, **pas encore testé**.
+
+- Mise à jour `0x1401517D0`, tâche +0x48 = travail : `+0x00` étape (24 étapes ; **5 = liste
+  active**), `+0x38` curseur (short), `+0x6D0` nombre d'entrées (5 ou 6 selon un indicateur
+  `+0x6EC`), `+0x6D4` numéros des entrées (int). Liste gérée par `sdkliststate.c` comme l'écran
+  titre ; validation = bouton croix (0x4000).
+- Libellés en images : entrée n dessinée avec le sprite `table[23 + n]` (table de 110 numéros de
+  sprites en `0x140796920`) de `c_main_01.spr` (`init_free.bin` → `init\camp.bin`, 5 planches ;
+  rectangles × 4 comme le clavier des noms). Relevé en regardant les sprites : 0 CONFIG, 1 QUICK
+  SAVE, 2 SUPPRIMER (écran des données en mode 4), 3 DONNÉES CHARGER (écran des données, mode 0),
+  4 RETOUR AU TITRE, 5 END GAME. Les entrées 4 et 5 ouvrent une question (fenêtre de message, lue
+  par `Dialogue.cs`).
+- Le vrai menu pause (plus tard dans le jeu) : `camp\cmproot.c`, `cmpmain.c` (vers `0x14013A000`,
+  `0x14014B000`), et son sous-menu système `cmpsystem.c`.
+
 ## Choix du sexe et de la difficulté (`SexSelectMenu.cs`)
 
 - `SexSelect::Update` `0x1402AA210` (sexselect.c). Structure : `+0x20` étape, `+0x24` curseur du

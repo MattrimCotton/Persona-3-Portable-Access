@@ -30,18 +30,14 @@ nouvelle qui vaut aussi pour lui.
     `Reloaded-II\User\Mods\p3ppc.accessibility\Config.json` pour les tests.
   - **1b (menus)** : en cours, méthode et état dans `docs/MENUS.md`. Écran titre (`TitleMenu.cs`)
     et choix du sexe / difficulté (`SexSelectMenu.cs`) **réussis au test 4** (28/09/2026). Saisie du nom (`NameEntry.cs`) **réussi au test 5** (29/09/2026) : clavier d'entrée du nom au début du jeu, variante
-    européenne (FR, DE, IT, ES), annonce de la touche sous le curseur et du nom saisi. **Auto-signature** (`AutoSignContract`, activée par défaut, **test 6 partiel, corrigé et déployé** (29/09/2026)) : noms selon le personnage choisi (héros **ou** héroïne, via l'indicateur `IsFemc`, `0x143387510`) = `HeroLastName`/`HeroFirstName` (Yuki / Makoto, héros) ou `HeroineLastName`/`HeroineFirstName` (Shiomi / Kotone, héroïne, défaut 2023) ; le mod écrit les deux noms et presse Start automatiquement ; initialement Start simulé trop tôt (mode 0, animation d'ouverture) : corrigé pour attendre que le clavier soit prêt (mode 1), délai ~1 s (doc complète : `docs/NAME_ENTRY.md` ; anglais et langues asiatiques non faits). À revérifier avec héros et héroïne. Écran
-    muet juste après « amusez-vous bien en jouant » : probablement une image fixe sans texte
-    (les scènes sont des images `CALL_BG_IMG`, 355 différentes). **Investigation (29/09/2026)** :
-    1 774 appels `CALL_BG_IMG(a, b, c, d)` dans les scripts d'événements, images avec texte
-    dans `data_FR` (`field2d/bg/bNN_*.abin`), autres probablement dans `data\umd0.cpk` / `umd1.cpk`
-    (non encore ouverts). Décision du joueur (29/09/2026) : **tous les menus d'abord**, puis étape 1c (images) : trouver la fonction P3P.exe appelée,
-    vérifier la correspondance numéros → fichiers, puis annoncer les descriptions au changement
-    d'image avant le texte. Suite : menu pause.
+    européenne (FR, DE, IT, ES), annonce de la touche sous le curseur et du nom saisi. **Auto-signature** (`AutoSignContract`, activée par défaut, **réussi au test 6** (29/09/2026)) : noms selon le personnage choisi (héros **ou** héroïne, via l'indicateur `IsFemc`, `0x143387510`) = `HeroLastName`/`HeroFirstName` (Yuki / Makoto, héros) ou `HeroineLastName`/`HeroineFirstName` (Shiomi / Kotone, héroïne, défaut 2023) ; le mod écrit les deux noms et le joueur presse Start ; délai Start corrigé le 29/09/2026 (documentation complète : `docs/NAME_ENTRY.md` ; anglais et langues asiatiques non faits).
+  - **Menu système** (`SystemMenu.cs`, **compilé et déployé, pas encore testé** (29/09/2026)) : bouton du menu des commandes ; entrées annoncées avec leur position (doc : `docs/MENUS.md` § « Menu système du début de partie »).
+  - **Manette** (`ControllerInput.cs`, **compilé et déployé, pas encore testé** (29/09/2026)) : LT + RT pour la parole/historique/muet, croix haut pour répéter (doc : `docs/CONTROLLER.md`).
   - Déjà en place : parole et historique (`Speech.cs`, Maj+P répéter, Maj+[ / Maj+] historique,
-    Maj+M couper les dialogues, dans `HistoryKeys.cs`), messages du mod en FR/EN (`Loc.cs`),
-    correction du titre fenêtre pour éviter que NVDA le ré-annonce à chaque image (`TitleBar.cs`,
-    test 3, 28/09/2026).
+    Maj+M couper les dialogues, dans `HistoryKeys.cs`), contrôle manette (`ControllerInput.cs`,
+    LT + RT modifier pour les mêmes fonctions, voir `docs/CONTROLLER.md`), messages du mod en FR/EN
+    (`Loc.cs`), correction du titre fenêtre pour éviter que NVDA le ré-annonce à chaque image
+    (`TitleBar.cs`, test 3, 28/09/2026).
 - Mettre à jour cette section à chaque étape franchie (voir « Tenir ce fichier à jour »).
 
 ## Chemins utiles

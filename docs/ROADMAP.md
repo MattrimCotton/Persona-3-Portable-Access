@@ -68,7 +68,8 @@ sert aussi aux étapes 4 et 5.
 
 Méthode et état détaillé : `MENUS.md`. Tâches, dans l'ordre proposé :
 
-1. **Menu pause** (le plus gros morceau) : liste principale, puis chaque sous-menu :
+1. **Menu pause** (le plus gros morceau). Fait le 29/09/2026 : **menu système du début de
+   partie** (Config, Charger, Retour au titre… ; `SystemMenu.cs`, à tester). Reste : liste principale, puis chaque sous-menu :
    compétences, objets, équipement, Persona, statut, liens sociaux, calendrier, configuration.
    Taille : grosse. Sources : mods `p3ppc.*` d'AnimatedSwine37 (menu de statut déjà accroché par
    `p3ppc.socialStatTracker`), tables de noms de `p3ppc.unhardcodedNames`.
@@ -97,13 +98,15 @@ Code à reprendre de P4G Access, qui ne dépend pas du jeu :
 
 - **Menu de réglages F1 et aide** (`SettingsMenu.cs`, `help_content.json` → `data/`).
 - **Sons** (`SoundSettings`, `ToneCue`, NAudio) : bips de menu, balises pour Tartarus.
-- **Manette** (`ControllerInput`, couche derrière les gâchettes).
+- **Manette** (`ControllerInput`, couche derrière les gâchettes) : **porté le 29/09/2026, à
+  tester** (LT + RT + croix : répéter, historique, dialogues ; `CONTROLLER.md`).
 - **Garde « transition de zone »** (cause de plantages dans P4G, `DUNGEON_DOORS_AND_BEACON.md`) :
   indispensable avant l'étape 3.
 
 ## À venir
 
-- **Étape 3, ville** : lire ce qui est sous le curseur, liste des personnes et objets avec saut
+- **Étape 3, ville** (le joueur doute que le déplacement marche bien, 29/09/2026 : à examiner
+  à cette étape) : lire ce qui est sous le curseur, liste des personnes et objets avec saut
   direct, carte, lieu, jour, moment, météo, fatigue. Textes des personnages dans
   `field2d/bg/*.abin`. Plus simple que la ville de P4G.
 - **Étape 4, combats** : tour, commandes, compétences, cibles, dégâts, faiblesses, All-Out Attack,

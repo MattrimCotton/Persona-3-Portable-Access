@@ -55,5 +55,13 @@
   "sym_question": "point d'interrogation",
   "sym_exclamation": "point d'exclamation",
   "name_auto": "Signature automatique du contrat : {0} {1}.",
-  "name_auto_press_start": "Noms remplis. Appuyez sur Start pour signer : touche W ou X du clavier par défaut."
+  "name_auto_press_start": "Noms remplis. Appuyez sur Start pour signer : touche W ou X du clavier par défaut.",
+  "sys_menu": "Menu système",
+  "sys_config": "Config",
+  "sys_quick_save": "Sauvegarde rapide",
+  "sys_delete": "Supprimer des données",
+  "sys_load": "Charger des données",
+  "sys_title": "Retour à l'écran titre",
+  "sys_end_game": "Quitter le jeu",
+  "sys_unknown": "Entrée {0}"
 }

@@ -49,5 +49,13 @@
   "sym_question": "Name entry key: ?",
   "sym_exclamation": "Name entry key: !",
   "name_auto": "Name entry with the automatic signature setting on: spoken when the mod fills in the names. {0} = last name, {1} = first name (from the mod settings).",
-  "name_auto_press_start": "Name entry: the automatic signature filled in the names but the game did not take the Start button; the player must press Start. Start is on the keys with scan codes 44 and 45 by default (Z and X on QWERTY, W and X on AZERTY): name the keys of a common keyboard of your language."
+  "name_auto_press_start": "Name entry: the automatic signature filled in the names but the game did not take the Start button; the player must press Start. Start is on the keys with scan codes 44 and 45 by default (Z and X on QWERTY, W and X on AZERTY): name the keys of a common keyboard of your language.",
+  "sys_menu": "Start-of-game system menu (Config, Load, Title...), spoken when it opens, before the first entry.",
+  "sys_config": "System menu entry: game settings.",
+  "sys_quick_save": "System menu entry: quick save.",
+  "sys_delete": "System menu entry: delete save data (the picture says SUPPRIMER).",
+  "sys_load": "System menu entry: load a saved game.",
+  "sys_title": "System menu entry: back to the title screen (the game then asks to confirm).",
+  "sys_end_game": "System menu entry: quit the game (the game then asks to confirm).",
+  "sys_unknown": "System menu: an entry the mod does not know. {0} = its number."
 }

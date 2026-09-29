@@ -55,5 +55,13 @@
   "sym_question": "question mark",
   "sym_exclamation": "exclamation mark",
   "name_auto": "Contract signed automatically: {0} {1}.",
-  "name_auto_press_start": "Names filled in. Press Start to sign: key Z or X on a default QWERTY keyboard."
+  "name_auto_press_start": "Names filled in. Press Start to sign: key Z or X on a default QWERTY keyboard.",
+  "sys_menu": "System menu",
+  "sys_config": "Config",
+  "sys_quick_save": "Quick save",
+  "sys_delete": "Delete data",
+  "sys_load": "Load data",
+  "sys_title": "Return to title",
+  "sys_end_game": "End game",
+  "sys_unknown": "Entry {0}"
 }

@@ -3,6 +3,11 @@
 Doc de système des menus de P3P. Un lecteur par écran, dans `src/p3ppc.accessibility/Components/`.
 Liste des menus à couvrir : `PLAN.md`, étape 1b.
 
+**Images préparées en lot (29/09/2026, Codex)** : consulter [MENU_IMAGES.md](MENU_IMAGES.md)
+et `extracted/menu_catalog/INDEX.md` avant de refaire une extraction. Catalogue des ressources
+communes et françaises : planches complètes, sprites numérotés, provenance, galerie par système.
+Repères sur le code équivalent P4G : [WORKSPACE_GUIDE.md](WORKSPACE_GUIDE.md).
+
 ## Méthode pour trouver un menu (28/09/2026)
 
 1. **Chemins des fichiers source restés dans l'exe.** Les assertions du jeu gardent le chemin du

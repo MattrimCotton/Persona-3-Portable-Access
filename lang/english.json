@@ -71,5 +71,6 @@
   "camp_equip": "Equip",
   "camp_status": "Status",
   "camp_social_link": "Social link",
-  "camp_system": "System"
+  "camp_system": "System",
+  "save_slot": "Slot {0}"
 }

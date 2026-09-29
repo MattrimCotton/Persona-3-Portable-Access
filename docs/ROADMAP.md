@@ -8,6 +8,10 @@ Règle de passage (décision du joueur, 28/09/2026) : **une étape n'est finie q
 est réussi**, et rien après l'étape 1 (ville, combats, Tartarus) ne commence tant que tous les
 dialogues et tous les menus ne sont pas lus.
 
+Précision du joueur, 29/09/2026 : développer et contrôler des lots cohérents avant de
+solliciter un test en jeu. Plusieurs sous-menus peuvent avancer sans attendre un retour
+à chaque modification. La validation joueur reste distincte des contrôles hors jeu.
+
 ## Diagramme
 
 Version texte juste en dessous (le diagramme est pour un affichage visuel, GitHub ou VS Code).
@@ -46,6 +50,10 @@ sert aussi aux étapes 4 et 5.
 
 ## Fait
 
+- **Catalogue local des images de menus** (29/09/2026, Codex) : 1 112 planches PNG,
+  4 542 éléments découpés, index par système et provenance, ressources communes et françaises.
+  Contrôlé hors jeu, sans valider de nouveaux lecteurs. Voir `MENU_IMAGES.md` et
+  `WORKSPACE_GUIDE.md` pour les repères P3P/P4G.
 - **Étape 0, prérequis** (28/09/2026) : jeu Steam, Reloaded-II, Persona Essentials, variables
   d'environnement, outils de rétro-ingénierie (Ghidra, Atlus Script Tools, CriFsLib).
 - **Squelette du mod** : parole Tolk (`Speech.cs`), historique Maj+[ / Maj+] et répétition Maj+P,

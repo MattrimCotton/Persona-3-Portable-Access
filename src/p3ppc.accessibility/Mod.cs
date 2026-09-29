@@ -31,7 +31,8 @@ public class Mod : ModBase // <= Do not Remove.
     private SystemMenu? _systemMenu;
     private ControllerInput? _controller;
     private CampMenu? _campMenu;
-    private TextSpy? _textSpy;
+    private TextCapture? _textCapture;
+    private SaveSlots? _saveSlots;
     private HistoryKeys? _historyKeys;
 
     public Mod(ModContext context)
@@ -81,7 +82,8 @@ public class Mod : ModBase // <= Do not Remove.
         _systemMenu = new SystemMenu(_hooks!);
         _controller = new ControllerInput(_hooks!);
         _campMenu = new CampMenu(_hooks!);
-        _textSpy = new TextSpy(_hooks!);
+        _textCapture = new TextCapture(_hooks!);
+        _saveSlots = new SaveSlots(_hooks!);
         _historyKeys = new HistoryKeys();
     }
 

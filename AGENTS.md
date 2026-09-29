@@ -19,12 +19,18 @@ action), `docs/ROADMAP.md` si une tâche change d'état, et la section « État 
   grands tableaux ni de symboles décoratifs, l'essentiel d'abord.
 - Il ne peut pas utiliser les interfaces graphiques (Reloaded-II…) : faire la configuration
   directement dans les fichiers.
-- **Toute vérification se fait en jeu par lui** : lui donner des consignes de test pas à pas, et
-  consigner le résultat dans `docs/TEST_LOG.md`.
+- **Tests regroupés** (précision du joueur, 29/09/2026) : avancer sur un lot cohérent et
+  effectuer soi-même les vérifications techniques avant de solliciter le joueur. Les tests
+  en jeu lui coûtent un effort ; ne pas bloquer chaque petite modification sur son retour.
+  Lui proposer ensuite un parcours court et consigner son résultat dans `docs/TEST_LOG.md`.
 - Écran ou texte inconnu : chercher d'abord dans les fichiers du jeu (`decompiled/`, images via
   `tools/re/spr2png.py`) et en ligne (`docs/REFERENCES.md`) ; ne demander une capture d'écran
   qu'après.
-- Une étape à la fois : on ne passe à la suivante que si le test en jeu est réussi.
+- Garder la priorité aux menus. Distinguer « implémenté », « contrôlé hors jeu » et « validé
+  par le joueur » ; on peut avancer sur plusieurs sous-menus avant le test du lot.
+- **P3P local est la référence technique** : exploiter son exécutable, ses archives, les
+  extractions et les outils de rétro-ingénierie déjà installés. P4G Access sert de modèle
+  d'accessibilité et de commandes ; vérifier les correspondances dans P3P lui-même.
 
 ## Équivalences des outils Claude Code
 

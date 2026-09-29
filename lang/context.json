@@ -65,5 +65,6 @@
   "camp_equip": "Pause menu entry.",
   "camp_status": "Pause menu entry.",
   "camp_social_link": "Pause menu entry.",
-  "camp_system": "Pause menu entry (config, load, quit...)."
+  "camp_system": "Pause menu entry (config, load, quit...).",
+  "save_slot": "Save / load screen: the selected save slot, before its contents (date, level, play time...). {0} = slot number."
 }

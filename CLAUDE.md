@@ -16,6 +16,11 @@ nouvelle qui vaut aussi pour lui.
 
 ## État actuel
 
+- **Images de menus préparées en lot** (29/09/2026, Codex) : catalogue local sous
+  `extracted/menu_catalog/` (1 112 planches, 4 542 éléments découpés, index et provenance),
+  outils `tools/re/menu_catalog.py` / `check_menu_catalog.py`. Lire `docs/MENU_IMAGES.md`
+  avant une nouvelle recherche d'image ; repères des deux projets dans `docs/WORKSPACE_GUIDE.md`.
+  Ressources extraites et contrôlées hors jeu, sans nouveau déploiement ni test de lecteur.
 - **Étape 0 (prérequis)** : P3P Steam installé (`D:\SteamLibrary\steamapps\common\P3P`, le 28/09/2026,
   avec les langues `data_EN`, `data_FR`…). `P3P.exe` ajouté dans Reloaded-II le 28/09/2026
   (`Reloaded-II\Apps\p3p.exe\AppConfig.json`, écrit à la main) avec Persona Essentials
@@ -23,18 +28,20 @@ nouvelle qui vaut aussi pour lui.
   Variables vérifiées : `RELOADEDIIMODS`, `GHIDRA_HOME`, `JAVA_HOME` (JDK 25).
 - **Étape 1 (le socle : dialogues puis tous les menus)** : en cours. Décision du joueur
   (28/09/2026) : rien d'autre (ville, combats, Tartarus) tant que les dialogues (1a) **et** tous
-  les menus (1b) ne sont pas lus correctement, chaque sous-étape testée en jeu.
+  les menus (1b) ne sont pas lus correctement. Précision du 29/09/2026 : développer et
+  contrôler des lots cohérents avant de demander un test joueur, sans arrêt à chaque sous-étape.
   - **1a (dialogues)** : **réussi au test 3** (28/09/2026) : messages, pages, orateur, accents,
     choix Oui / Non (`docs/TEST_LOG.md`). `Components/Dialogue.cs` accroche `MsgWindow::DrawAll` (voir `docs/DIALOGUE.md`). Le mod est
     activé dans `Apps\p3p.exe\AppConfig.json` ; mode débogage activé dans
     `Reloaded-II\User\Mods\p3ppc.accessibility\Config.json` pour les tests.
   - **1b (menus)** : en cours, méthode et état dans `docs/MENUS.md`. Écran titre (`TitleMenu.cs`)
     et choix du sexe / difficulté (`SexSelectMenu.cs`) **réussis au test 4** (28/09/2026). Saisie du nom (`NameEntry.cs`) **réussi au test 5** (29/09/2026) : clavier d'entrée du nom au début du jeu, variante
-    européenne (FR, DE, IT, ES), annonce de la touche sous le curseur et du nom saisi. **Auto-signature** (`AutoSignContract`, activée par défaut, **réussi au test 6** (29/09/2026)) : noms selon le personnage choisi (héros **ou** héroïne, via l'indicateur `IsFemc`, `0x143387510`) = `HeroLastName`/`HeroFirstName` (Yuki / Makoto, héros) ou `HeroineLastName`/`HeroineFirstName` (Shiomi / Kotone, héroïne, défaut 2023) ; le mod écrit les deux noms et le joueur presse Start ; délai Start corrigé le 29/09/2026 (documentation complète : `docs/NAME_ENTRY.md` ; anglais et langues asiatiques non faits).
+    européenne (FR, DE, IT, ES), annonce de la touche sous le curseur et du nom saisi. **Auto-signature** (`AutoSignContract`, activée par défaut, **partiel au test 6** (29/09/2026) : noms écrits, Start automatique corrigé ensuite, à retester) : noms selon le personnage choisi (héros **ou** héroïne, via l'indicateur `IsFemc`, `0x143387510`) = `HeroLastName`/`HeroFirstName` (Yuki / Makoto, héros) ou `HeroineLastName`/`HeroineFirstName` (Shiomi / Kotone, héroïne, défaut 2023) ; le mod écrit les deux noms et le joueur presse Start ; délai Start corrigé le 29/09/2026 (documentation complète : `docs/NAME_ENTRY.md` ; anglais et langues asiatiques non faits).
   - **Menu système** (`SystemMenu.cs`, **compilé et déployé, pas encore testé** (29/09/2026)) : bouton du menu des commandes ; entrées annoncées avec leur position (doc : `docs/MENUS.md` § « Menu système du début de partie »).
   - **Menu camp** (`CampMenu.cs`, **compilé** (29/09/2026), pas encore testé) : menu pause avec liste principale (Skill, Item, Persona, Equip, Status, Social link, System) ; annonce l'entrée courante avec sa position (doc : `docs/MENUS.md`).
   - **Manette** (`ControllerInput.cs`, **compilé et déployé, pas encore testé** (29/09/2026)) : LT + RT pour la parole/historique/muet, croix haut pour répéter (doc : `docs/CONTROLLER.md`).
-  - **TextSpy** (`TextSpy.cs`, **compilé** (29/09/2026), debug mode only) : outil de recherche / rétro-ingénierie, F9 logs pour 20 s tous les textes dessinés avec la fonction commune du jeu (couleur, position), une fois par (couleur, texte, position) pour identifier les menusfocus (doc : `docs/SIGNATURES.md`).
+  - **Capture de texte** (`TextCapture.cs`, **compilé** (29/09/2026)) : intercepte les six variantes de `DrawText` du jeu (l'une par alignement, adresses 0x1402320E0…0x140232710). Pendant que le jeu dessine, le mod collecte les textes avec `Begin()` / `End()` pour les lire, ce qui évite de décoder chaque écran. Inclut **TextSpy** (debug mode only) : F9 active le logging pour 20 s de tous les textes dessinés avec couleur et position, une fois par (couleur, texte, position) pour trouver les adresses des menus (doc : `docs/SIGNATURES.md`).
+  - **Écran Sauvegarde/Chargement** (`SaveSlots.cs`, **compilé** (29/09/2026), pas encore testé) : annonce le slot sélectionné (numéro, puis date, heure, niveau, durée, lieu… ou « AUCUNE DONNÉE »). Accroche `DrawSlot` (0x140270770) via signature ; collecte les textes avec `TextCapture` pendant le dessin du jeu (doc : `docs/SAVE_LOAD.md`).
   - Déjà en place : parole et historique (`Speech.cs`, Maj+P répéter, Maj+[ / Maj+] historique,
     Maj+M couper les dialogues, dans `HistoryKeys.cs`), contrôle manette (`ControllerInput.cs`,
     LT + RT modifier pour les mêmes fonctions, voir `docs/CONTROLLER.md`), messages du mod en FR/EN
@@ -67,10 +74,10 @@ nouvelle qui vaut aussi pour lui.
 |---|---|
 | `src/p3ppc.accessibility/` | Le mod (projet SDK .NET, point d'entrée `Mod.cs`, fonctions sous `Components/`, accès mémoire sous `Native/`, localization via `Loc.cs`). |
 | `src/p3ppc.accessibility/Loc.cs` | Messages du mod chargés depuis `lang/<steam_language_id>.json` (FR, EN, DE, IT, ES, JA, KO, ZH). Réglage Langue, Auto = langue Steam du jeu. Lookup: langue choisie → EN → clé. Aucun message codé en dur. Méthodes : `T(key)` (texte brut), `F(key, args)` (avec placeholders). Voir `docs/LOCALIZATION.md` pour les règles d'ajout et la validation. |
-| `docs/` | Documents « source de vérité » par système (un `.md` par système : `DIALOGUE.md`, `BATTLE_SYSTEM.md`, `TARTARUS.md`…), plus `SIGNATURES.md` (toutes les signatures et adresses trouvées), `TEST_LOG.md` (résultats des tests en jeu), `REFERENCES.md` (sources fiables : fichiers du jeu, docs de modding, guides ; à consulter avant de chercher ailleurs), `LOCALIZATION.md` (système de traduction : fichiers, règles, validation), `SHELL_PITFALLS.md` (pièges des commandes sous Windows et parades). |
+| `docs/` | Documents « source de vérité » par système (un `.md` par système : `DIALOGUE.md`, `BATTLE_SYSTEM.md`, `TARTARUS.md`…), plus `SIGNATURES.md` (toutes les signatures et adresses trouvées), `TEST_LOG.md` (résultats des tests en jeu), `REFERENCES.md` (sources fiables : fichiers du jeu, docs de modding, guides ; à consulter avant de chercher ailleurs), `LOCALIZATION.md` (système de traduction : fichiers, règles, validation), `WORKSPACE_GUIDE.md` (repères des projets P3P et P4G, commandes), `DOC_REVIEW.md` (revue des docs et contradictions relevées), `SHELL_PITFALLS.md` (pièges des commandes sous Windows et parades). |
 | `lang/` | Traductions des messages du mod, un fichier par langue (`english.json` référence, `french.json` toujours complet, `context.json` pour les traducteurs, guide `lang/README.md`). Vérifier : `python tools/lang_check.py --complete french` (aussi lancé sur GitHub). |
 | `data/` | Fichiers JSON chargés par le mod à l'exécution (aide F1, tables de noms…). |
-| `tools/` | Scripts : `checklog.ps1` (journal Reloaded), `lang_check.py` (valider les fichiers de traduction `lang/*.json` contre la référence anglaise, `python tools/lang_check.py [--complete fr] [--complete <id> ...]`), `re/CpkExtract/` (extraire une archive CPK du jeu, `dotnet run`), `re/pakunpack.py` (ouvrir les archives PAK `.bin`/`.pak`, `-r` récursif), `re/decompile-texts.ps1` (pwsh 7, décompiler les scripts `.bf` et messages `.bmd` d'une archive P3P avec Atlus Script Tools), `re/sigscan.py` (tester une signature dans un exe), `re/strfind.py` + `re/xref.py` (trouver une chaîne puis le code qui l'utilise), `re/spr2png.py` (convertir une image du jeu `.spr`/`.tmx` en PNG pour lire un texte dessiné), `re/disasm.py` (désassembler à une adresse), `re/p3pmem.py` (lire / écrire la mémoire du jeu en cours, fonctions `rd` / `wr` via `from p3pmem import rd, wr`), `re/requirements.txt` (dépendances Python pour `disasm.py`, `xref.py`, `spr2png.py` : `python -m pip install -r tools/re/requirements.txt`). |
+| `tools/` | Scripts : `checklog.ps1` (journal Reloaded), `lang_check.py` (valider les fichiers de traduction `lang/*.json` contre la référence anglaise, `python tools/lang_check.py [--complete fr] [--complete <id> ...]`), `re/CpkExtract/` (extraire une archive CPK du jeu, `dotnet run`), `re/pakunpack.py` (ouvrir les archives PAK `.bin`/`.pak`, `-r` récursif), `re/decompile-texts.ps1` (pwsh 7, décompiler les scripts `.bf` et messages `.bmd` d'une archive P3P avec Atlus Script Tools), `re/sigscan.py` (tester une signature dans un exe), `re/strfind.py` + `re/xref.py` (trouver une chaîne puis le code qui l'utilise), `re/spr2png.py` (convertir une image du jeu `.spr`/`.tmx` en PNG pour lire un texte dessiné), `re/disasm.py` (désassembler à une adresse), `re/p3pmem.py` (lire / écrire la mémoire du jeu en cours, fonctions `rd` / `wr` via `from p3pmem import rd, wr`), `re/menu_catalog.py` + `re/check_menu_catalog.py` (produire / vérifier le catalogue d'images de menus, voir `docs/MENU_IMAGES.md`), `re/requirements.txt` (dépendances Python pour `disasm.py`, `xref.py`, `spr2png.py` : `python -m pip install -r tools/re/requirements.txt`). |
 
 ## Commandes
 
@@ -85,8 +92,10 @@ python tools/lang_check.py --complete french
 
 Déployer : skill `/build-deploy`. Le jeu doit être **fermé** (sinon la DLL est verrouillée).
 Après publication, le skill exécute `python tools/lang_check.py --complete french` pour valider
-les traductions avant de lancer le jeu. Il n'y a pas de tests automatiques : **toute vérification
-se fait en jeu par le joueur** (skill `/test-session`). Les fichiers de traduction sont validés
+les traductions avant de lancer le jeu. Effectuer les contrôles techniques disponibles
+(signatures dans l'exécutable, structures, compilation, traductions) avant de solliciter le
+joueur. Regrouper la validation en jeu sur un lot substantiel (skill `/test-session`).
+Un contrôle hors jeu ne vaut pas validation de l'expérience NVDA. Les fichiers de traduction sont validés
 automatiquement par le workflow GitHub Actions `.github/workflows/lang-check.yml` à chaque push/PR.
 
 ## Règles du projet
@@ -123,7 +132,14 @@ automatiquement par le workflow GitHub Actions `.github/workflows/lang-check.yml
   couper une annonce importante. Le jeu existe en plusieurs langues (dont le français, `data_FR`) :
   le décodage du texte doit gérer les accents ; les messages propres au mod suivent la langue
   choisie dans les réglages.
-- **Une étape à la fois** : on ne passe à l'étape suivante du plan que si le test en jeu est réussi.
+- **Travail par lots** (précision du joueur, 29/09/2026) : les tests en jeu sont difficiles
+  pour lui. Avancer sur plusieurs sous-menus et faire les vérifications techniques de façon
+  autonome, puis proposer un test court quand il y a suffisamment de matière. Ne pas attendre
+  son retour après chaque modification. Conserver la priorité aux menus et distinguer les
+  fonctions implémentées, contrôlées hors jeu et validées en jeu.
+- **Sources locales P3P** : utiliser directement l'exécutable, les archives, les textes
+  décompilés et les outils installés. P4G Access guide les comportements et commandes ;
+  les structures et signatures doivent être établies dans P3P. Les deux jeux sont installés.
 - **Joueur aveugle** : les réponses à l'utilisateur sont en français, lisibles au lecteur d'écran
   (pas de grands tableaux ni de symboles décoratifs dans les réponses courtes).
 - Documenter chaque système dans `docs/<SYSTÈME>.md` : comment il a été trouvé (rétro-ingénierie)

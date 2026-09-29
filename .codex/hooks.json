@@ -1,0 +1,38 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "PowerShell|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python 'C:\\Users\\asdes.ASUS\\Documents\\SourceCode\\Persona-3-Portable-Access\\.codex\\hooks\\shell-guard.py'",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File 'C:\\Users\\asdes.ASUS\\Documents\\SourceCode\\Persona-3-Portable-Access\\.codex\\hooks\\session-context.ps1'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File 'C:\\Users\\asdes.ASUS\\Documents\\SourceCode\\Persona-3-Portable-Access\\.codex\\hooks\\claude-md-check.ps1'",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

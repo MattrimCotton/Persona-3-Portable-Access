@@ -47,15 +47,78 @@
   (`ControllerInput.cs`, `CONTROLLER.md`) : déployés, **pas encore testés**.
 - Le joueur doute du déplacement : à examiner à l'étape 3 (ville).
 
+## Récapitulatif (29/09/2026, Codex)
+
+- Lecture des documents de suivi, de l'état Git et du dernier journal pour le bilan demandé.
+- Aucun changement de code, compilation, déploiement ou nouveau test en jeu.
+- `CLAUDE.md` mentionne aussi le menu camp, la capture de texte et les emplacements de
+  sauvegarde/chargement comme compilés, mais non validés en jeu.
+- Le test 6 reste **partiel** selon `TEST_LOG.md` : remplissage des noms constaté, mais
+  validation Start automatique corrigée encore à retester pour les deux protagonistes.
+- Prochaine action : les tests en jeu ci-dessous ; les nouveaux lecteurs compilés restent
+  également à valider. La priorité demeure de terminer tous les menus.
+
+## Session suivante (29/09/2026, Codex) : images de menus préparées en lot
+
+- Demande du joueur : se familiariser avec les deux projets, puis préparer les images de
+  menus à l'avance pour accélérer la suite. Repères écrits dans `docs/WORKSPACE_GUIDE.md`.
+- Catalogue créé dans `extracted/menu_catalog/` : **1 112 planches PNG, 4 542 sprites découpés,
+  247 planches-contact**. Index Markdown, galerie par système, origines et métadonnées JSON.
+  Archives communes et françaises ; voir `docs/MENU_IMAGES.md` pour le périmètre et les limites.
+- Outil reproductible `tools/re/menu_catalog.py`, contrôleur `check_menu_catalog.py`,
+  extension de `spr2png.py` aux textures 4 bits. Deux formats d'archives gérés ; celui des noms
+  de 32 octets est aussi documenté par P4G `AreaArcUnpack.py`.
+- Contrôle hors jeu : 5 901 PNG et 3 593 liens HTML vérifiés ; aucune erreur de texture.
+  Rectangles non découpables signalés, planches intégrales conservées. Exemples de menus
+  pause, titre, nom et sauvegarde inspectés visuellement.
+- Aucun changement au code des lecteurs, aucun déploiement, aucun test joueur nouveau,
+  aucun commit. Modifications antérieures préservées ; projet P4G consulté sans modification.
+- Prochaine action : utiliser cet index au lieu de réextraire les ressources, puis reprendre
+  la validation des lecteurs déjà présents et les sous-menus de l'étape 1b.
+
+## Session suivante (29/09/2026, Codex) : fonctionnement et commandes des deux mods
+
+- Clarification du joueur : comprendre P3P Access en profondeur et étudier P4G Access
+  comme modèle d'accessibilité, particulièrement ses commandes. L'extraction d'images
+  est une aide de recherche, pas l'objectif principal du développement.
+- Lecture de tous les composants actifs de P3P, du socle texte/mémoire/localisation,
+  et comparaison de la parole, du clavier, de la manette et du menu de réglages P4G.
+- `WORKSPACE_GUIDE.md` enrichi : architecture, commandes réellement disponibles,
+  commandes P4G encore absentes, masquage des entrées, distinction jeu/mod/diagnostic.
+  Configuration des touches du jeu consultée en lecture seule.
+- Aucun changement de code du mod, compilation, déploiement ou nouveau test joueur.
+  Les lecteurs non testés gardent ce statut ; aucun commit effectué.
+
+## Session suivante (29/09/2026, Codex) : lecture de tous les Markdown du projet
+
+- Lecture détaillée des 35 fichiers Markdown de documentation, procédures et rôles,
+  hors ressources extraites et fichiers générés. Synthèse dans `docs/DOC_REVIEW.md`.
+- Relevé des contradictions : traduction/clavier déjà testés, auto-signature partielle,
+  racine camp et sauvegarde présentes mais non validées, docs techniques manquantes,
+  exemples de commandes périmés et hypothèses à conserver comme telles.
+- Ordre des étapes et portée de « tous les menus » explicités dans la revue. Le travail
+  par lots demandé par le joueur prime sur les anciennes attentes après chaque lecteur.
+- Aucun changement de code, aucune compilation, aucun déploiement ni nouveau test joueur.
+
 ## Prochaine action
 
-1. Test en jeu : menu système (bouton du menu des commandes : entrées annoncées avec leur
-   position), manette (LT + RT + croix haut : répéter), et signature automatique à la prochaine
-   nouvelle partie (héros et héroïne). Voir `MENUS.md`, `CONTROLLER.md`, `NAME_ENTRY.md`.
-2. En parallèle : **vrai menu pause** (`camp\cmproot.c`, `cmpmain.c`), puis sauvegarde (`memcard\*.c`),
-   date et heure (`blbrd\date\dtdraw.c`). Lire d'abord le code des mods `p3ppc.socialStatTracker`
-   et `p3ppc.unhardcodedNames` sur GitHub. Les images de scène (1c) ne viennent qu'après la fin
-   de tous les menus.
+Dernière précision du joueur (29/09/2026, consignée par Codex) : il ne peut pas tester
+chaque petite avancée. Développer des lots substantiels et faire les contrôles techniques
+avant de lui proposer un parcours de test regroupé. Cette consigne remplace les anciennes
+formulations imposant son retour à chaque sous-étape.
+
+1. Reprendre les lecteurs du menu pause et de sauvegarde, puis les sous-menus manquants
+   de l'étape 1b, en constituant un lot cohérent. Exploiter directement P3P.exe, ses archives,
+   les textes décompilés et les outils locaux ; P4G sert de modèle de comportement.
+2. Vérifier les signatures, accès mémoire, transitions et traductions ; compléter la doc.
+   Proposer ensuite un test court du lot, incluant les lecteurs antérieurs non validés
+   lorsque le parcours s'y prête. La signature du contrat pourra être retestée à une
+   prochaine nouvelle partie, sans imposer de recommencer maintenant.
+
+Présence vérifiée des deux jeux dans la bibliothèque Steam sur D:, de Ghidra (mode sans
+interface), AtlusScriptTools, CriFsLib.GUI et des extractions françaises. Consignes alignées
+dans AGENTS.md, CLAUDE.md, ROADMAP.md et WORKSPACE_GUIDE.md. Aucun nouveau code, déploiement
+ou test en jeu pendant cette mise au point.
 
 ## Boucle de travail (identique pour tous les agents)
 
@@ -63,7 +126,8 @@
    (`C:\Users\asdes.ASUS\Documents\SourceCode\Persona-4-Golden-Access`).
 2. Rétro-ingénierie : fichiers du jeu décompilés (`decompiled/`), outils `tools/re/`, mods
    `p3ppc.*`. Noter toute signature dans `SIGNATURES.md`.
-3. Écrire le lecteur (`src/p3ppc.accessibility/Components/`), messages dans `Loc.cs`.
+3. Écrire le lecteur (`src/p3ppc.accessibility/Components/`), messages dans `lang/*.json`
+   via `Loc.T` / `Loc.F`.
 4. Compiler, puis déployer **jeu fermé** (procédure : `.claude/skills/build-deploy/SKILL.md`).
 5. Donner au joueur des consignes de test courtes (`.claude/skills/test-session/SKILL.md`).
 6. Après son retour : lire le journal (`pwsh -NoProfile -File tools/checklog.ps1`), consigner le

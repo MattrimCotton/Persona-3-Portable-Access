@@ -85,5 +85,8 @@
   "equip_feet": "Footwear",
   "equip_accessory": "Accessory",
   "equip_none": "nothing equipped",
-  "character_unknown": "Character {0}"
+  "character_unknown": "Character {0}",
+  "social_stat_rank": "{0}: {1}",
+  "social_stat_level": "{0}: level {1}",
+  "social_stat_unknown": "Social stat {0}"
 }

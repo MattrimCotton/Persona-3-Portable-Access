@@ -79,5 +79,8 @@
   "equip_feet": "Equip screen: footwear slot.",
   "equip_accessory": "Equip screen: accessory slot.",
   "equip_none": "Equip screen: the slot is empty.",
-  "character_unknown": "Fallback when the game's character name cannot be read. {0} = character number."
+  "character_unknown": "Fallback when the game's character name cannot be read. {0} = character number.",
+  "social_stat_rank": "Status screen: a social stat and its rank, both texts of the game (Academics: Average). {0} = stat, {1} = rank.",
+  "social_stat_level": "Status screen: fallback when the rank name cannot be read. {0} = stat, {1} = level 1-6.",
+  "social_stat_unknown": "Status screen: fallback when the stat name cannot be read. {0} = 1-3."
 }

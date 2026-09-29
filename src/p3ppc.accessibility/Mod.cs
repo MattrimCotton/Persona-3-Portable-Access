@@ -37,6 +37,7 @@ public class Mod : ModBase // <= Do not Remove.
     private ItemRows? _itemRows;
     private SkillRows? _skillRows;
     private EquipMenu? _equipMenu;
+    private SocialStats? _socialStats;
     private HistoryKeys? _historyKeys;
 
     public Mod(ModContext context)
@@ -93,6 +94,7 @@ public class Mod : ModBase // <= Do not Remove.
         _itemRows = new ItemRows(_hooks!);
         _skillRows = new SkillRows(_hooks!);
         _equipMenu = new EquipMenu(_hooks!);
+        _socialStats = new SocialStats(_hooks!);
         _historyKeys = new HistoryKeys();
     }
 

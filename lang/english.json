@@ -63,5 +63,13 @@
   "sys_load": "Load data",
   "sys_title": "Return to title",
   "sys_end_game": "End game",
-  "sys_unknown": "Entry {0}"
+  "sys_unknown": "Entry {0}",
+  "camp_menu": "Menu",
+  "camp_skill": "Skill",
+  "camp_item": "Item",
+  "camp_persona": "Persona",
+  "camp_equip": "Equip",
+  "camp_status": "Status",
+  "camp_social_link": "Social link",
+  "camp_system": "System"
 }

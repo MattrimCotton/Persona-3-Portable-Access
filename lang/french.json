@@ -63,5 +63,13 @@
   "sys_load": "Charger des données",
   "sys_title": "Retour à l'écran titre",
   "sys_end_game": "Quitter le jeu",
-  "sys_unknown": "Entrée {0}"
+  "sys_unknown": "Entrée {0}",
+  "camp_menu": "Menu",
+  "camp_skill": "Compétences",
+  "camp_item": "Objets",
+  "camp_persona": "Persona",
+  "camp_equip": "Équipement",
+  "camp_status": "Statut",
+  "camp_social_link": "Liens sociaux",
+  "camp_system": "Système"
 }

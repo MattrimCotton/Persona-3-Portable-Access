@@ -30,6 +30,8 @@ public class Mod : ModBase // <= Do not Remove.
     private NameEntry? _nameEntry;
     private SystemMenu? _systemMenu;
     private ControllerInput? _controller;
+    private CampMenu? _campMenu;
+    private TextSpy? _textSpy;
     private HistoryKeys? _historyKeys;
 
     public Mod(ModContext context)
@@ -70,6 +72,7 @@ public class Mod : ModBase // <= Do not Remove.
         Log($"Tolk loaded. HasSpeech={Tolk.HasSpeech()}, ScreenReader={Tolk.DetectScreenReader() ?? "none"}");
         Speech.Say(Loc.T("loaded"), true);
 
+        GameStrings.Init(_hooks!);
         _titleBar = new TitleBar(_hooks!);
         _dialogue = new Dialogue(_hooks!);
         _sexSelect = new SexSelectMenu(_hooks!);
@@ -77,6 +80,8 @@ public class Mod : ModBase // <= Do not Remove.
         _nameEntry = new NameEntry(_hooks!);
         _systemMenu = new SystemMenu(_hooks!);
         _controller = new ControllerInput(_hooks!);
+        _campMenu = new CampMenu(_hooks!);
+        _textSpy = new TextSpy(_hooks!);
         _historyKeys = new HistoryKeys();
     }
 

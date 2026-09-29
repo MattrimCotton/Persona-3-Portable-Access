@@ -1,3 +1,4 @@
+using p3ppc.accessibility.Native.Text;
 using Reloaded.Hooks.Definitions;
 using static p3ppc.accessibility.Utils;
 
@@ -21,6 +22,9 @@ internal class SystemMenu
 
     private static readonly string[] EntryKeys =
         { "sys_config", "sys_quick_save", "sys_delete", "sys_load", "sys_title", "sys_end_game" };
+
+    /// <summary>The game's own label of each entry (hardcoded texts, docs/GAME_STRINGS.md).</summary>
+    private static readonly int[] GameText = { 51, 136, 52, 53, 54, 133 };
 
     internal SystemMenu(IReloadedHooks hooks)
     {
@@ -53,7 +57,9 @@ internal class SystemMenu
         _lastCursor = cursor;
 
         if (!TryRead(work + 0x6D4 + cursor * 4, out int id)) return;
-        string name = id >= 0 && id < EntryKeys.Length ? Loc.T(EntryKeys[id]) : Loc.F("sys_unknown", id);
+        string name = id >= 0 && id < EntryKeys.Length
+            ? GameStrings.Get(GameText[id]) is { Length: > 0 } g ? g : Loc.T(EntryKeys[id])
+            : Loc.F("sys_unknown", id);
         string text = name + ", " + Loc.F("position", cursor + 1, count);
         if (entered) text = Loc.T("sys_menu") + ". " + text;
         LogDebug($"[SystemMenu] cursor {cursor}/{count} id {id}");

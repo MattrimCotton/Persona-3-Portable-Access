@@ -57,5 +57,13 @@
   "sys_load": "System menu entry: load a saved game.",
   "sys_title": "System menu entry: back to the title screen (the game then asks to confirm).",
   "sys_end_game": "System menu entry: quit the game (the game then asks to confirm).",
-  "sys_unknown": "System menu: an entry the mod does not know. {0} = its number."
+  "sys_unknown": "System menu: an entry the mod does not know. {0} = its number.",
+  "camp_menu": "Pause menu (camp), spoken when it opens, before the first entry.",
+  "camp_skill": "Pause menu entry. The game's help line follows.",
+  "camp_item": "Pause menu entry.",
+  "camp_persona": "Pause menu entry.",
+  "camp_equip": "Pause menu entry.",
+  "camp_status": "Pause menu entry.",
+  "camp_social_link": "Pause menu entry.",
+  "camp_system": "Pause menu entry (config, load, quit...)."
 }

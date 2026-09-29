@@ -96,6 +96,17 @@ du jeu `GetHardcodedText(44 + curseur)`.
 - Pas encore : fiche détaillée (caractéristiques, affinités, compétences : les lignes de
   compétences de sorte 0 et 2 ne sont pas lues par `SkillRows`), panneaux `shared\shdpersona.c`.
 
+## Système (`CampSystemMenu.cs`)
+
+- `CampSystem::Draw(travail)` `0x14015A150` (`cmpsystem.c`), chaque image. Travail : +0x18
+  drapeaux (2 = liste affichée), +0x36 première entrée visible, +0x2C curseur. Neuf entrées,
+  libellés = textes du jeu (table de paires `0x1405DF5F0…`) : 60 Quête, 61 Glossaire, 62 Config,
+  132 Difficulté, 136 Sauvegarde rapide, 63 Effacer, 64 Charger, 65 Écran titre, 133 Quitter.
+- Aide : `GetHelp(entrée, 0)` `0x14015DBE0` (texte du jeu, table `0x1407A8960` par langue).
+- Annonce : « Système. Config. <aide>. 3 sur 9 ».
+- Pas encore : seconde liste du même écran (+0x30 curseur, +0x32 défilement, +0x58 entrées :
+  sans doute la liste des quêtes ou du glossaire), entrées grisées.
+
 ## À faire
 
 Calendrier (`cmpcalendar.c`), système (`cmpsystem.c` : état, quêtes, glossaire, config, effacer,

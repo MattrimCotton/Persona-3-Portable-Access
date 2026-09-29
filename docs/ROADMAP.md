@@ -56,6 +56,10 @@ sert aussi aux étapes 4 et 5.
 - **Titre de fenêtre** relu par NVDA : corrigé (`TitleBar.cs`, validé au test 4).
 - **1b, premiers menus** (réussis au test 4) : écran titre (`TitleMenu.cs`), choix du sexe et de
   la difficulté (`SexSelectMenu.cs`), doc `MENUS.md`.
+- **Traduction** (29/09/2026, à valider au prochain test en jeu) : messages du mod dans
+  `lang/<langue>.json`, anglais de référence, français complet, repli sur l'anglais, 9 langues
+  du jeu dans le réglage, vérificateur `tools/lang_check.py` lancé aussi sur GitHub, guide des
+  contributeurs `lang/README.md`. Doc : `LOCALIZATION.md`.
 - **Outillage** : extraction CPK/PAK, décompilation des textes, recherche de chaînes et de
   références, désassemblage, conversion d'images, garde-fous des commandes
   (`SHELL_PITFALLS.md`).
@@ -108,7 +112,8 @@ Code à reprendre de P4G Access, qui ne dépend pas du jeu :
   gros chantier de navigation.
 - **Étape 6** : Velvet Room et fusion, boutiques, requêtes d'Elizabeth / Theodore, vidéos
   (introduction…).
-- **Étape 7** : aide F1 complète, guide sans spoiler, README, publication.
+- **Étape 7** : aide F1 complète, guide sans spoiler, README, publication, appel aux
+  traducteurs (le système de traduction est prêt depuis le 29/09/2026).
 
 ## Risques suivis
 

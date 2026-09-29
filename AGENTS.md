@@ -67,7 +67,9 @@ Pièges vécus, détail dans [docs/SHELL_PITFALLS.md](docs/SHELL_PITFALLS.md) :
 - Lectures mémoire toujours gardées (`Utils.cs`) : une violation d'accès fait planter le jeu.
 - Hooks appelés à chaque image : ne parler que quand l'état change (sinon NVDA est coupé sans
   arrêt) ; vérifier qu'une ligne `[Speech]` n'apparaît qu'une fois dans le journal.
-- Messages du mod uniquement dans `Loc.cs` (FR/EN).
+- Messages du mod : jamais en dur dans le code, toujours `Loc.T` / `Loc.F`. Chaque nouvelle
+  clé va dans `lang/english.json`, `lang/french.json` et `lang/context.json`, puis
+  `python tools/lang_check.py --complete french` doit afficher OK (`docs/LOCALIZATION.md`).
 - Fichiers extraits du jeu (`extracted/`, `decompiled/`) : droit d'auteur, jamais versionnés.
 - git : faire un commit seulement quand le joueur le demande, puis le pousser sur le dépôt public
   https://github.com/MattrimCotton/Persona-3-Portable-Access (`git push`). Jamais de fichiers du jeu ni de données personnelles.

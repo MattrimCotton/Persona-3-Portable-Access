@@ -1,0 +1,18 @@
+name: Translation check
+
+on:
+  push:
+    paths: ["lang/**", "tools/lang_check.py", ".github/workflows/lang-check.yml"]
+  pull_request:
+    paths: ["lang/**", "tools/lang_check.py", ".github/workflows/lang-check.yml"]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Check translation files
+        run: python tools/lang_check.py --complete french

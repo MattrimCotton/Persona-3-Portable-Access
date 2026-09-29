@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "language": "Français",
+    "translators": ["P3P Access team"],
+    "note": "Langue prioritaire du projet : doit toujours être complète."
+  },
+  "loaded": "P3P Access chargé.",
+  "no_history": "Aucun historique.",
+  "history_start": "Début de l'historique. ",
+  "history_newest": "Plus récent. ",
+  "dialogue_on": "Lecture des dialogues activée.",
+  "dialogue_off": "Lecture des dialogues désactivée.",
+  "position": "{0} sur {1}",
+  "press_any_key": "Appuyez sur une touche.",
+  "title_new_game": "Nouvelle partie",
+  "title_load": "Charger",
+  "title_continue": "Continuer",
+  "title_config": "Config",
+  "title_quit": "Quitter",
+  "gender_male": "Personnage masculin",
+  "gender_female": "Personnage féminin",
+  "diff_beginner": "Débutant",
+  "diff_easy": "Facile",
+  "diff_normal": "Normale",
+  "diff_hard": "Difficile",
+  "diff_maniac": "Maniaque"
+}

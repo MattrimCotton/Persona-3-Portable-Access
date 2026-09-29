@@ -20,7 +20,8 @@ uses, but English and the other languages are not tested yet.
 - Dialogue: every message and page, the speaker's name, accents, and Yes / No choices.
 - Title screen, protagonist (male / female) and difficulty selection.
 - Speech history (Shift+[ / Shift+]), repeat last (Shift+P), mute dialogue (Shift+M).
-- Mod messages in French and English (follows the game's Steam language by default).
+- Mod messages in French and English (follows the game's Steam language by default), ready to
+  be translated into the other languages of the game.
 
 Next: every in-game menu (pause menu, save / load, name entry, system messages), then the town,
 battles and Tartarus. Full roadmap: [docs/ROADMAP.md](docs/ROADMAP.md) (in French).
@@ -43,6 +44,11 @@ dotnet build src/p3ppc.accessibility/p3ppc.accessibility.csproj -c Debug
 
 Deploying copies the Release build into the Reloaded II `Mods` folder (see
 `.claude/skills/build-deploy/SKILL.md`). The game must be closed while deploying.
+
+## Translations welcome
+
+The mod's own messages are in [lang/](lang/), one JSON file per language, with context for
+translators and an automatic check. See [lang/README.md](lang/README.md) to add your language.
 
 ## Credits and license
 

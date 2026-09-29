@@ -14,7 +14,8 @@ description: Compile le mod p3ppc.accessibility et le déploie dans le dossier M
 3. Déployer (publication Release dans le dossier du mod, comme `BuildLinked.ps1` de P4G) :
    `dotnet publish src/p3ppc.accessibility/p3ppc.accessibility.csproj -c Release -o "$env:RELOADEDIIMODS/p3ppc.accessibility" /p:OutputPath="./bin/Release"`
    (`RELOADEDIIMODS` = `D:\SteamLibrary\Reloaded-II\Mods`, défini dans `.claude/settings.json`.)
-4. Vérifier que `ModConfig.json` et les fichiers de `data/` sont bien présents dans le dossier du
+4. Lancer `python tools/lang_check.py --complete french` (doit afficher OK). Vérifier que
+   `ModConfig.json`, les fichiers de `data/` et les traductions `Lang\*.json` sont bien présents dans le dossier du
    mod, et que les dépendances listées dans `ModConfig.json` existent dans `Mods\`.
 5. Dire au joueur, en une ou deux phrases : c'est déployé, relancer le jeu par Reloaded-II, et
    **quoi tester** (skill `test-session` si le test a plusieurs étapes).

@@ -66,10 +66,11 @@ nouvelle qui vaut aussi pour lui.
 | Chemin | Contenu |
 |---|---|
 | `src/p3ppc.accessibility/` | Le mod (projet SDK .NET, point d'entrée `Mod.cs`, fonctions sous `Components/`, accès mémoire sous `Native/`, localization via `Loc.cs`). |
-| `src/p3ppc.accessibility/Loc.cs` | Messages propres au mod en FR/EN (réglage Langue, Auto = langue Steam du jeu). Aucun message codé en dur ailleurs. |
-| `docs/` | Documents « source de vérité » par système (un `.md` par système : `DIALOGUE.md`, `BATTLE_SYSTEM.md`, `TARTARUS.md`…), plus `SIGNATURES.md` (toutes les signatures et adresses trouvées) `TEST_LOG.md` (résultats des tests en jeu) et `REFERENCES.md` (sources fiables : fichiers du jeu, docs de modding, guides ; à consulter avant de chercher ailleurs), `SHELL_PITFALLS.md` (pièges des commandes sous Windows et parades). |
+| `src/p3ppc.accessibility/Loc.cs` | Messages du mod chargés depuis `lang/<steam_language_id>.json` (FR, EN, DE, IT, ES, JA, KO, ZH). Réglage Langue, Auto = langue Steam du jeu. Lookup: langue choisie → EN → clé. Aucun message codé en dur. Méthodes : `T(key)` (texte brut), `F(key, args)` (avec placeholders). Voir `docs/LOCALIZATION.md` pour les règles d'ajout et la validation. |
+| `docs/` | Documents « source de vérité » par système (un `.md` par système : `DIALOGUE.md`, `BATTLE_SYSTEM.md`, `TARTARUS.md`…), plus `SIGNATURES.md` (toutes les signatures et adresses trouvées), `TEST_LOG.md` (résultats des tests en jeu), `REFERENCES.md` (sources fiables : fichiers du jeu, docs de modding, guides ; à consulter avant de chercher ailleurs), `LOCALIZATION.md` (système de traduction : fichiers, règles, validation), `SHELL_PITFALLS.md` (pièges des commandes sous Windows et parades). |
+| `lang/` | Traductions des messages du mod, un fichier par langue (`english.json` référence, `french.json` toujours complet, `context.json` pour les traducteurs, guide `lang/README.md`). Vérifier : `python tools/lang_check.py --complete french` (aussi lancé sur GitHub). |
 | `data/` | Fichiers JSON chargés par le mod à l'exécution (aide F1, tables de noms…). |
-| `tools/` | Scripts : `checklog.ps1` (journal Reloaded), `re/CpkExtract/` (extraire une archive CPK du jeu, `dotnet run`), `re/pakunpack.py` (ouvrir les archives PAK `.bin`/`.pak`, `-r` récursif), `re/decompile-texts.ps1` (pwsh 7, décompiler les scripts `.bf` et messages `.bmd` d'une archive P3P avec Atlus Script Tools), `re/sigscan.py` (tester une signature dans un exe), `re/strfind.py` + `re/xref.py` (trouver une chaîne puis le code qui l'utilise), `re/spr2png.py` (convertir une image du jeu `.spr`/`.tmx` en PNG pour lire un texte dessiné), `re/disasm.py` (désassembler à une adresse), `re/requirements.txt` (dépendances Python pour `disasm.py`, `xref.py`, `spr2png.py` : `python -m pip install -r tools/re/requirements.txt`). |
+| `tools/` | Scripts : `checklog.ps1` (journal Reloaded), `lang_check.py` (valider les fichiers de traduction `lang/*.json` contre la référence anglaise, `python tools/lang_check.py [--complete fr] [--complete <id> ...]`), `re/CpkExtract/` (extraire une archive CPK du jeu, `dotnet run`), `re/pakunpack.py` (ouvrir les archives PAK `.bin`/`.pak`, `-r` récursif), `re/decompile-texts.ps1` (pwsh 7, décompiler les scripts `.bf` et messages `.bmd` d'une archive P3P avec Atlus Script Tools), `re/sigscan.py` (tester une signature dans un exe), `re/strfind.py` + `re/xref.py` (trouver une chaîne puis le code qui l'utilise), `re/spr2png.py` (convertir une image du jeu `.spr`/`.tmx` en PNG pour lire un texte dessiné), `re/disasm.py` (désassembler à une adresse), `re/requirements.txt` (dépendances Python pour `disasm.py`, `xref.py`, `spr2png.py` : `python -m pip install -r tools/re/requirements.txt`). |
 
 ## Commandes
 
@@ -78,11 +79,15 @@ nouvelle qui vaut aussi pour lui.
 dotnet build src/p3ppc.accessibility/p3ppc.accessibility.csproj -c Debug
 # Journal Reloaded le plus récent de P3P, avec les erreurs
 pwsh -NoProfile -File tools/checklog.ps1
+# Valider les traductions (local)
+python tools/lang_check.py --complete french
 ```
 
 Déployer : skill `/build-deploy`. Le jeu doit être **fermé** (sinon la DLL est verrouillée).
-Il n'y a pas de tests automatiques : **toute vérification se fait en jeu par le joueur** (skill
-`/test-session`).
+Après publication, le skill exécute `python tools/lang_check.py --complete french` pour valider
+les traductions avant de lancer le jeu. Il n'y a pas de tests automatiques : **toute vérification
+se fait en jeu par le joueur** (skill `/test-session`). Les fichiers de traduction sont validés
+automatiquement par le workflow GitHub Actions `.github/workflows/lang-check.yml` à chaque push/PR.
 
 ## Règles du projet
 
@@ -109,6 +114,9 @@ Il n'y a pas de tests automatiques : **toute vérification se fait en jeu par le
   charge avec ToolSearch avant l'appel. Le hook `shell-guard.py` refuse les pièges connus.
 - **Mods d'AnimatedSwine37 (`p3ppc.*`)** : source de signatures déjà validées sur P3P Steam. Les
   consulter sur GitHub avant de chercher une fonction à la main.
+- **Traduction** (29/09/2026) : aucun texte parlé en dur ; tout nouveau message = une clé dans
+  `lang/english.json`, `lang/french.json` et `lang/context.json`, puis `tools/lang_check.py`
+  (détail : `docs/LOCALIZATION.md`). Ne jamais réordonner l'énumération `ModLanguage`.
 - **Parole** : phrases courtes, l'info importante en premier, pas de répétition inutile ; ne pas
   couper une annonce importante. Le jeu existe en plusieurs langues (dont le français, `data_FR`) :
   le décodage du texte doit gérer les accents ; les messages propres au mod suivent la langue

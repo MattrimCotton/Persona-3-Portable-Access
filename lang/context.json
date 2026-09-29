@@ -1,0 +1,23 @@
+{
+  "_about": "Context for translators: where and when each message is spoken. Not loaded by the mod. Keep short: messages are spoken by a screen reader, so the most important word comes first.",
+  "loaded": "Spoken once when the game starts with the mod.",
+  "no_history": "Speech history keys (Shift+[ / Shift+]) pressed while nothing has been spoken yet.",
+  "history_start": "Prefix before the oldest history entry, when going back past the start. Keep the trailing space.",
+  "history_newest": "Prefix before the newest history entry, when going forward past the end. Keep the trailing space.",
+  "dialogue_on": "Shift+M: dialogue reading turned on.",
+  "dialogue_off": "Shift+M: dialogue reading turned off.",
+  "position": "Position in a menu list, said after the item name: {0} = item number, {1} = number of items. Example: 'Load game, 2 of 5'.",
+  "press_any_key": "Title screen, before the menu appears (the game waits for a key press).",
+  "title_new_game": "Title screen menu item. Use the official name from the game in your language if it exists.",
+  "title_load": "Title screen menu item (load a save file).",
+  "title_continue": "Title screen menu item (resume from the quick save).",
+  "title_config": "Title screen menu item (settings).",
+  "title_quit": "Title screen menu item (exit the game).",
+  "gender_male": "New game: choice of the main character, male.",
+  "gender_female": "New game: choice of the main character, female.",
+  "diff_beginner": "New game: difficulty level. Use the game's official names.",
+  "diff_easy": "New game: difficulty level.",
+  "diff_normal": "New game: difficulty level (the default choice).",
+  "diff_hard": "New game: difficulty level.",
+  "diff_maniac": "New game: difficulty level (the hardest)."
+}

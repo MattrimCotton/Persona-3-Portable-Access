@@ -16,6 +16,15 @@
 - **Enregistré dans git** et publié sur GitHub (dépôt public https://github.com/MattrimCotton/Persona-3-Portable-Access).
 - **Décisions du joueur** : tous les menus d'abord, puis l'étape 1c (images) ; copie publique GitHub.
 
+## Session suivante (29/09/2026, Claude Code) : système de traduction
+
+- Messages du mod sortis de `Loc.cs` vers `lang/*.json` ; réglage de langue étendu aux 9 langues
+  du jeu ; `Loc.F` protège des marqueurs cassés ; vérificateur et contrôle GitHub.
+- **Compilé et déjà déployé** (la compilation Debug écrit directement dans le dossier du mod),
+  **pas encore testé en jeu** : au prochain lancement, vérifier que « P3P Access chargé. » et les
+  menus de l'écran titre parlent toujours en français (sinon : `Lang\` absent ou illisible, voir
+  les lignes `[Language]` du journal).
+
 ## Prochaine action
 
 **Menu pause** (tâche 1 de la section « En cours » de `ROADMAP.md`). Commencer par lire le code

@@ -125,6 +125,16 @@ ou à Tartarus. L'étape se fait en deux temps, chacun testé en jeu :
 
 ---
 
+### Traduction (tout au long du projet, décision du joueur du 29/09/2026)
+- Le **français est la langue prioritaire** : toujours complet et testé en premier.
+- Le mod doit pouvoir être traduit facilement par des contributeurs : chaque message du mod est
+  dans un fichier par langue (`lang/<langue>.json`, référence anglaise, contexte pour les
+  traducteurs, vérification automatique sur GitHub, repli sur l'anglais pour une traduction
+  partielle). Le texte du jeu, lui, est lu dans la langue du jeu. Détails : `docs/LOCALIZATION.md`,
+  guide des contributeurs : `lang/README.md`.
+- Chaque nouvelle étape suit la même règle ; les contenus longs à venir (aide F1, descriptions
+  des images de scène, noms) auront aussi un fichier par langue.
+
 ## 4. Risques et inconnues
 
 - **Rétro-ingénierie** : c'est l'essentiel du travail, et il est propre à P3P (structures de

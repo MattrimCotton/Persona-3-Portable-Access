@@ -60,7 +60,7 @@ internal class SexSelectMenu
 
         string text = Loc.T(names[cursor]);
         if (names == Difficulties)
-            text += ", " + string.Format(Loc.T("position"), cursor + 1, names.Length);
+            text += ", " + Loc.F("position", cursor + 1, names.Length);
         // On entering the choice, queue it after the question being read; moving interrupts.
         Speech.Say(text, !entered);
     }

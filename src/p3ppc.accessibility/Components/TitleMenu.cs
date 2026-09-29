@@ -58,7 +58,7 @@ internal class TitleMenu
         if (!entered && cursor == _lastCursor) return;
         _lastCursor = cursor;
         if (cursor < 0 || cursor >= Entries.Length) return;
-        Speech.Say(Loc.T(Entries[cursor]) + ", " + string.Format(Loc.T("position"), cursor + 1, Entries.Length), true);
+        Speech.Say(Loc.T(Entries[cursor]) + ", " + Loc.F("position", cursor + 1, Entries.Length), true);
     }
 
     private delegate nint UpdateDelegate(nint task);

@@ -34,6 +34,11 @@
       <Link>%(Filename)%(Extension)</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <!-- Traductions des messages du mod (lang/ à la racine du dépôt), copiées dans Lang\. -->
+    <Content Include="..\..\lang\*.json" Exclude="..\..\lang\context.json">
+      <Link>Lang\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <!-- Tolk + pilotes des lecteurs d'écran, copiés à plat. -->
     <Content Include="..\..\lib\tolk\*.dll">
       <Link>%(Filename)%(Extension)</Link>

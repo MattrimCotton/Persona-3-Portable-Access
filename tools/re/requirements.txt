@@ -1,0 +1,5 @@
+# Python 3.13 packages used by tools/re/*.py (disasm.py, xref.py: capstone + numpy; spr2png.py: pillow)
+# Install: python -m pip install -r tools/re/requirements.txt
+capstone>=5.0
+numpy>=2.0
+pillow>=10.0

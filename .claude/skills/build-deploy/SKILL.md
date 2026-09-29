@@ -6,7 +6,7 @@ description: Compile le mod p3ppc.accessibility et le déploie dans le dossier M
 # Compiler et déployer P3P Access
 
 1. **Le jeu doit être fermé** (sinon la DLL est verrouillée et la copie échoue) :
-   `Get-Process P3P -ErrorAction SilentlyContinue`. S'il tourne, demander au joueur de quitter le
+   `tasklist //NH //FO CSV | grep -q '"P3P.exe"' && echo lance || echo ferme` (Bash). S'il tourne, demander au joueur de quitter le
    jeu ; ne jamais le fermer de force sans son accord (partie non sauvegardée).
 2. Compiler en Debug pour voir les erreurs :
    `dotnet build src/p3ppc.accessibility/p3ppc.accessibility.csproj -c Debug`

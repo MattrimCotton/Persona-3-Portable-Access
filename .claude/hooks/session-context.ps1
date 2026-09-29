@@ -1,5 +1,6 @@
 # SessionStart hook: prints a short project status that is added to Claude's context.
 $ErrorActionPreference = 'SilentlyContinue'
+[Console]::OutputEncoding = [Text.Encoding]::UTF8
 $root = if ($env:CLAUDE_PROJECT_DIR) { $env:CLAUDE_PROJECT_DIR } else { (Get-Location).Path }
 Set-Location $root
 
@@ -23,7 +24,7 @@ $logDir = Join-Path $env:APPDATA 'Reloaded-Mod-Loader-II\Logs'
 $log = Get-ChildItem $logDir -Filter '*.txt' | Where-Object { $_.Name -match 'P3P' } |
     Sort-Object LastWriteTime -Descending | Select-Object -First 1
 if ($log) {
-    $errs = @(Select-String -Path $log.FullName -Pattern 'Exception|Error|Crash|Unhandled|fatal')
+    $errs = @(Select-String -Path $log.FullName -Encoding UTF8 -Pattern 'Exception|Error|Crash|Unhandled|fatal')
     $lines += "- latest P3P log: $($log.Name), $($errs.Count) error-like line(s)"
     $errs | Select-Object -Last 3 | ForEach-Object { $lines += "    $($_.LineNumber): $($_.Line.Trim())" }
 } else {

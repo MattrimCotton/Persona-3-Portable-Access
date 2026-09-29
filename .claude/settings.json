@@ -2,7 +2,9 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
     "RELOADEDIIMODS": "D:\\SteamLibrary\\Reloaded-II\\Mods",
-    "DOTNET_CLI_TELEMETRY_OPTOUT": "1"
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+    "PYTHONUTF8": "1",
+    "PYTHONIOENCODING": "utf-8"
   },
   "permissions": {
     "allow": [
@@ -33,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/.claude/hooks/session-context.ps1\"",
+            "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/.claude/hooks/session-context.ps1\"",
             "timeout": 30
           }
         ]
@@ -44,8 +46,20 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/.claude/hooks/claude-md-check.ps1\"",
+            "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/.claude/hooks/claude-md-check.ps1\"",
             "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "PowerShell|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/shell-guard.py\"",
+            "timeout": 10
           }
         ]
       }

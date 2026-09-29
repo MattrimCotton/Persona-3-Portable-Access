@@ -30,3 +30,12 @@ _Aucun test pour l'instant._
     la partie avec le personnage masculin ? ») permet déjà de savoir ce qui est sélectionné ;
   - NVDA relit régulièrement le nom de la fenêtre : le jeu réécrit son titre (images par seconde),
     comme P4G. Corrigé par `TitleBar.cs` (même correctif que P4G), à vérifier au prochain test.
+
+## 28/09/2026, test 4 : premiers menus (étape 1b)
+- **Résultat : réussi** (« C'est en bonne voie »). Écran titre : « Appuyez sur une touche », puis
+  les 5 entrées dans l'ordre, dans les deux sens. Choix du personnage (masculin / féminin) et de
+  la difficulté (Normale au départ, puis Facile, Débutant) annoncés ; les confirmations du jeu
+  (« Commencer la partie avec le personnage masculin ? », « Tester la difficulté Débutant ? »)
+  concordent avec le curseur lu. Titre de fenêtre : plus de plainte (correctif `TitleBar` validé).
+- Reste : l'écran muet est **juste après « Maintenant, amusez-vous bien en jouant. »** (environ
+  50 s avant « Terminus, dans la soirée... », Entrée une ou deux fois, pas de musique).

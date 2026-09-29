@@ -5,7 +5,7 @@ description: Lit le dernier journal Reloaded-II de P3P et diagnostique les erreu
 
 # Lire le journal Reloaded de P3P
 
-1. `powershell -NoProfile -File tools/checklog.ps1 -Tail 150` (ou `-Full` si besoin).
+1. `pwsh -NoProfile -File tools/checklog.ps1 -Tail 150` (ou `-Full` si besoin).
    Les journaux sont dans `%APPDATA%\Reloaded-Mod-Loader-II\Logs`.
 2. Si le jeu a planté sans trace dans le journal, regarder aussi
    `D:\SteamLibrary\steamapps\common\P3P\crashdat` (fichiers récents) et l'Observateur

@@ -28,6 +28,20 @@ internal static class Loc
         ["history_newest"] = ("Plus récent. ", "Newest. "),
         ["dialogue_on"] = ("Lecture des dialogues activée.", "Dialogue reader on."),
         ["dialogue_off"] = ("Lecture des dialogues désactivée.", "Dialogue reader off."),
+        ["position"] = ("{0} sur {1}", "{0} of {1}"),
+        ["press_any_key"] = ("Appuyez sur une touche.", "Press any key."),
+        ["title_new_game"] = ("Nouvelle partie", "New game"),
+        ["title_load"] = ("Charger", "Load game"),
+        ["title_continue"] = ("Continuer", "Continue"),
+        ["title_config"] = ("Config", "Config"),
+        ["title_quit"] = ("Quitter", "Quit"),
+        ["gender_male"] = ("Personnage masculin", "Male protagonist"),
+        ["gender_female"] = ("Personnage féminin", "Female protagonist"),
+        ["diff_beginner"] = ("Débutant", "Beginner"),
+        ["diff_easy"] = ("Facile", "Easy"),
+        ["diff_normal"] = ("Normale", "Normal"),
+        ["diff_hard"] = ("Difficile", "Hard"),
+        ["diff_maniac"] = ("Maniaque", "Maniac"),
     };
 
     internal static string T(string key)

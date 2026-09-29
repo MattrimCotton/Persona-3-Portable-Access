@@ -15,6 +15,9 @@ param(
     [switch]$Full
 )
 
+# Windows PowerShell 5 reads BOM-less files as ANSI and prints in the OEM code page: force UTF-8 both ways.
+[Console]::OutputEncoding = [Text.Encoding]::UTF8
+
 $logDir = Join-Path $env:APPDATA 'Reloaded-Mod-Loader-II\Logs'
 if (-not (Test-Path $logDir)) { Write-Host "No Reloaded log directory at $logDir"; exit 1 }
 
@@ -24,10 +27,10 @@ if (-not $latest) { Write-Host "No P3P logs found in $logDir"; exit 1 }
 
 Write-Host "=== $($latest.Name) ($([int]((Get-Date) - $latest.LastWriteTime).TotalMinutes) min ago, $([int]($latest.Length/1kb)) KB) ==="
 
-if ($Full) { Get-Content $latest.FullName } else { Get-Content $latest.FullName -Tail $Tail }
+if ($Full) { Get-Content $latest.FullName -Encoding UTF8 } else { Get-Content $latest.FullName -Encoding UTF8 -Tail $Tail }
 
 # Surface error-ish lines anywhere in the file.
-$errLines = Select-String -Path $latest.FullName -Pattern 'Exception|Error|Crash|Unhandled|fatal'
+$errLines = Select-String -Path $latest.FullName -Encoding UTF8 -Pattern 'Exception|Error|Crash|Unhandled|fatal'
 if ($errLines) {
     Write-Host "`n=== Error-like lines ($($errLines.Count)) ==="
     $errLines | ForEach-Object { "{0,5}: {1}" -f $_.LineNumber, $_.Line } | Select-Object -Last 40

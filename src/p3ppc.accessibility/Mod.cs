@@ -25,6 +25,8 @@ public class Mod : ModBase // <= Do not Remove.
     // Components are kept in fields so their hook delegates stay rooted.
     private TitleBar? _titleBar;
     private Dialogue? _dialogue;
+    private SexSelectMenu? _sexSelect;
+    private TitleMenu? _titleMenu;
     private HistoryKeys? _historyKeys;
 
     public Mod(ModContext context)
@@ -67,6 +69,8 @@ public class Mod : ModBase // <= Do not Remove.
 
         _titleBar = new TitleBar(_hooks!);
         _dialogue = new Dialogue(_hooks!);
+        _sexSelect = new SexSelectMenu(_hooks!);
+        _titleMenu = new TitleMenu(_hooks!);
         _historyKeys = new HistoryKeys();
     }
 

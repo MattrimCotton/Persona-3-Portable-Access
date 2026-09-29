@@ -115,10 +115,9 @@ Code à reprendre de P4G Access, qui ne dépend pas du jeu :
 - Une mise à jour Steam peut casser signatures et adresses : tout est noté dans `SIGNATURES.md`.
 - Plantages par lecture mémoire pendant un changement de zone : garde à porter avant l'étape 3.
 - Deux protagonistes (masculin / féminin) : textes et liens différents, à tester des deux côtés.
-- Travail non versionné : un seul commit (28/09/2026) ; le reste attend d'être enregistré, et le
-  dépôt n'a pas de copie distante (pas de remote git).
+- Pas de copie distante du dépôt (pas de remote git) : une panne du disque ferait tout perdre.
 
 ## Décisions en attente du joueur
 
 1. Étape 1c : maintenant (écran muet seulement) ou après les menus (complète) ?
-2. Enregistrer le travail dans git, et créer éventuellement un dépôt GitHub de sauvegarde.
+2. Créer ou non un dépôt GitHub de sauvegarde (le travail est enregistré localement, commit `0f38cfe`).

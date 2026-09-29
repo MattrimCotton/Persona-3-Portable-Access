@@ -13,11 +13,11 @@
   - feuille de route `ROADMAP.md`, ce fichier, `AGENTS.md` pour Codex.
 - **Rien de déployé ni testé en jeu** pendant cette session : la dernière version testée est
   celle du test 4 (28/09/2026, réussi).
-- **Non enregistré dans git** : tout le travail depuis le commit `6e55bc4` (menus, outils, docs).
+- **Enregistré dans git** : commit `0f38cfe` (29/09/2026). Pas de dépôt distant (pas de remote).
 
 ## Prochaine action
 
-1. Demander au joueur les deux décisions en attente (fin de `ROADMAP.md`).
+1. Demander au joueur les décisions en attente (fin de `ROADMAP.md`).
 2. Selon sa réponse :
    - **1c tout de suite** : trouver la fonction de `P3P.exe` appelée par `CALL_BG_IMG` (piste dans
      `MENUS.md`, section « Images des scènes »), annoncer l'image de l'écran muet ;

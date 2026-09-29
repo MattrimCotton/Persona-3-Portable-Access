@@ -27,6 +27,7 @@ public class Mod : ModBase // <= Do not Remove.
     private Dialogue? _dialogue;
     private SexSelectMenu? _sexSelect;
     private TitleMenu? _titleMenu;
+    private NameEntry? _nameEntry;
     private HistoryKeys? _historyKeys;
 
     public Mod(ModContext context)
@@ -71,6 +72,7 @@ public class Mod : ModBase // <= Do not Remove.
         _dialogue = new Dialogue(_hooks!);
         _sexSelect = new SexSelectMenu(_hooks!);
         _titleMenu = new TitleMenu(_hooks!);
+        _nameEntry = new NameEntry(_hooks!);
         _historyKeys = new HistoryKeys();
     }
 

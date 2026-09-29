@@ -1,7 +1,9 @@
 {
   "_meta": {
     "language": "Français",
-    "translators": ["P3P Access team"],
+    "translators": [
+      "P3P Access team"
+    ],
     "note": "Langue prioritaire du projet : doit toujours être complète."
   },
   "loaded": "P3P Access chargé.",
@@ -23,5 +25,35 @@
   "diff_easy": "Facile",
   "diff_normal": "Normale",
   "diff_hard": "Difficile",
-  "diff_maniac": "Maniaque"
+  "diff_maniac": "Maniaque",
+  "name_entry_intro": "Saisie du nom. Choisissez chaque lettre avec les flèches, puis validez-la.",
+  "name_typed": "Nom : {0}",
+  "name_empty": "Nom vide",
+  "key_capital": "majuscule {0}",
+  "sym_period": "point",
+  "sym_comma": "virgule",
+  "sym_paren_open": "parenthèse ouvrante",
+  "sym_paren_close": "parenthèse fermante",
+  "sym_slash": "barre oblique",
+  "sym_quote": "guillemet",
+  "sym_apostrophe": "apostrophe",
+  "sym_colon": "deux-points",
+  "sym_semicolon": "point-virgule",
+  "sym_hash": "dièse",
+  "sym_dollar": "dollar",
+  "sym_percent": "pour cent",
+  "sym_ampersand": "et commercial",
+  "sym_asterisk": "astérisque",
+  "sym_repeat": "signe de répétition japonais",
+  "sym_dash": "tiret",
+  "sym_plus": "plus",
+  "sym_minus": "moins",
+  "sym_times": "multiplié",
+  "sym_divide": "divisé",
+  "sym_equals": "égal",
+  "sym_dot": "point médian",
+  "sym_question": "point d'interrogation",
+  "sym_exclamation": "point d'exclamation",
+  "name_auto": "Signature automatique du contrat : {0} {1}.",
+  "name_auto_press_start": "Noms remplis. Appuyez sur Start pour signer : touche W ou X du clavier par défaut."
 }

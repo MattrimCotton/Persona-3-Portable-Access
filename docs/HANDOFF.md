@@ -25,11 +25,29 @@
   menus de l'écran titre parlent toujours en français (sinon : `Lang\` absent ou illisible, voir
   les lignes `[Language]` du journal).
 
+## Session suivante (29/09/2026, Claude Code) : début de « tous les menus »
+
+- Carte des 273 modules de l'exe (`MENUS.md`) : modules de chaque menu de l'étape 1b repérés.
+- **Saisie du nom** écrite (`NameEntry.cs`, doc `NAME_ENTRY.md`) : touche sous le curseur (lettres
+  accentuées, majuscules, symboles en mots), nom tapé. **Compilé et déployé, pas encore testé.**
+- Nouveau piège : l'outil Bash réduit une barre oblique inverse doublée ; bloqué par
+  `shell-guard.py` (`SHELL_PITFALLS.md`, n° 11).
+- **Non enregistré dans git** : traduction déjà poussée, mais pas la saisie du nom ni les docs de
+  cette session.
+
+- Test 5 : traduction et clavier réussis, mais valider est difficile. Ajouté : **signature
+  automatique** (héros Yuki Makoto ou héroïne Shiomi Kotone selon IsFemc, puis Start simulé).
+  **Déployé, pas encore testé.**
+
 ## Prochaine action
 
-**Menu pause** (tâche 1 de la section « En cours » de `ROADMAP.md`). Commencer par lire le code
-des mods `p3ppc.socialStatTracker` et `p3ppc.unhardcodedNames` sur GitHub, puis la méthode de
-`MENUS.md`. Les images de scène (1c) ne viennent qu'après la fin de tous les menus.
+1. Test en jeu : nouvelle partie jusqu'au contrat, avec le héros puis avec l'héroïne : la
+   signature doit se faire seule, puis la confirmation du jeu doit être lue (elle devrait donner
+   l'ordre nom / prénom). Voir `NAME_ENTRY.md`.
+2. En parallèle : **menu pause** (`camp\*.c`, voir `MENUS.md`), puis sauvegarde (`memcard\*.c`),
+   date et heure (`blbrd\date\dtdraw.c`). Lire d'abord le code des mods `p3ppc.socialStatTracker`
+   et `p3ppc.unhardcodedNames` sur GitHub. Les images de scène (1c) ne viennent qu'après la fin
+   de tous les menus.
 
 ## Boucle de travail (identique pour tous les agents)
 

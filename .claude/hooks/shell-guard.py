@@ -37,6 +37,10 @@ PS_RULES = [
 ]
 
 BASH_RULES = [
+    (r"\\\\",
+     "L'outil Bash réduit une barre oblique inverse doublée à une seule, même dans un heredoc "
+     "entre apostrophes (chemins et Markdown abîmés, scripts Python cassés). Utiliser chr(92) "
+     "en Python, des barres obliques / dans les chemins, et Edit / Write pour les textes."),
     (r"\b(powershell|pwsh)(\.exe)?\b[^|;&]*\s-(Command|c)\b",
      "Pas de powershell -Command depuis Bash (double interprétation des guillemets). "
      "Lancer un script .ps1 avec -File, ou utiliser directement l'outil PowerShell."),

@@ -1,7 +1,9 @@
 {
   "_meta": {
     "language": "English",
-    "translators": ["P3P Access team"],
+    "translators": [
+      "P3P Access team"
+    ],
     "note": "Reference file. Every key must exist here first. Context for each key: context.json."
   },
   "loaded": "P3P Access loaded.",
@@ -23,5 +25,35 @@
   "diff_easy": "Easy",
   "diff_normal": "Normal",
   "diff_hard": "Hard",
-  "diff_maniac": "Maniac"
+  "diff_maniac": "Maniac",
+  "name_entry_intro": "Name entry. Choose each letter with the arrow keys, then confirm it.",
+  "name_typed": "Name: {0}",
+  "name_empty": "Name empty",
+  "key_capital": "capital {0}",
+  "sym_period": "period",
+  "sym_comma": "comma",
+  "sym_paren_open": "open parenthesis",
+  "sym_paren_close": "close parenthesis",
+  "sym_slash": "slash",
+  "sym_quote": "quotation mark",
+  "sym_apostrophe": "apostrophe",
+  "sym_colon": "colon",
+  "sym_semicolon": "semicolon",
+  "sym_hash": "hash",
+  "sym_dollar": "dollar",
+  "sym_percent": "percent",
+  "sym_ampersand": "ampersand",
+  "sym_asterisk": "asterisk",
+  "sym_repeat": "Japanese repeat mark",
+  "sym_dash": "dash",
+  "sym_plus": "plus",
+  "sym_minus": "minus",
+  "sym_times": "times",
+  "sym_divide": "divided by",
+  "sym_equals": "equals",
+  "sym_dot": "middle dot",
+  "sym_question": "question mark",
+  "sym_exclamation": "exclamation mark",
+  "name_auto": "Contract signed automatically: {0} {1}.",
+  "name_auto_press_start": "Names filled in. Press Start to sign: key Z or X on a default QWERTY keyboard."
 }

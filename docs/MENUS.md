@@ -21,6 +21,25 @@ Liste des menus à couvrir : `PLAN.md`, étape 1b.
    des sprites dans le fichier, et la table des sprites dessinés dans le code.
 5. **Textes du jeu** : les messages (`.bmd`) décompilés dans `decompiled/` (voir `REFERENCES.md`).
 
+## Carte des modules de P3P.exe (29/09/2026)
+
+273 fichiers source cités dans l'exe (liste complète : chercher les chaînes contenant
+`skeleton` et finissant par `.c`). Ceux des menus de l'étape 1b :
+
+- **Saisie du nom** : `name_entry\nentry.c`, `nentry_figs.c` (langues européennes),
+  `nentry_en.c`… : écrit le 29/09/2026, voir `NAME_ENTRY.md`.
+- **Menu pause (camp)** : `camp\cmproot.c`, `cmpmain.c` (racine), `cmpskill.c`, `cmpitem.c`,
+  `cmpequip.c`, `cmppersona.c`, `cmpstatus.c`, `cmpcommu.c` (liens sociaux), `cmpcalendar.c`,
+  `cmpconfig.c` (réglages), `cmpsystem.c` / `cmpsimplesystem.c` (système), `cmppartypanel.c`.
+- **Sauvegarde / chargement** : `memcard\mc.c`, `mcpanel.c`, `quicksave.c`, `mc_clear.c`.
+- **Fenêtres et listes communes** : `shared\shddialog.c`, `shdlist.c`, `shdlbox.c`,
+  `shdwindow.c`, `shdskill.c`, `shdstatus.c`, `shdpersona.c`.
+- **Date et heure** : `blbrd\date\dtdraw.c`, `calendar\*.c` (changement de jour, d'heure,
+  Heure Sombre `drktime.c`). Limite de temps : `blbrd\limit\tmlimit.c`.
+- **Historique des messages** : `font\itfbacklog.c`.
+- Plus tard : boutiques et Velvet Room (`facility\*`), combat (`battle\*`), ville
+  (`field2d\*`), Tartarus (`field\*`), liens sociaux (`community\*`).
+
 ## Écran titre (`TitleMenu.cs`)
 
 - `Title::Update` `0x14024BCA0` (titledraw.c). Structure : `+0x00` étape, `+0x28` curseur.
@@ -47,8 +66,8 @@ Liste des menus à couvrir : `PLAN.md`, étape 1b.
 ## À faire
 
 Menu pause (compétences, objets, équipement, Persona, statut, liens sociaux, calendrier,
-réglages), sauvegarde / chargement, messages système, saisie du nom, écrans de chargement, argent,
-date et heure.
+réglages), sauvegarde / chargement, messages système, écrans de chargement, argent, date et heure.
+Saisie du nom : écrite le 29/09/2026 (`NAME_ENTRY.md`), à tester.
 
 ## Écran muet après « Maintenant, amusez-vous bien en jouant. »
 

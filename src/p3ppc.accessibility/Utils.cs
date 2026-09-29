@@ -26,6 +26,20 @@ internal class Utils
         => addr >= 0x10000 && (ulong)addr <= 0x00007FFFFFFFFFFFUL
            && Rpm(SelfProc(), addr, dst, size, out nint got) && got == (nint)size;
 
+    [DllImport("kernel32.dll", EntryPoint = "WriteProcessMemory")]
+    private static extern unsafe bool Wpm(nint h, nint addr, void* buf, nint size, out nint written);
+
+    /// <summary>Guarded write into game memory (same reason as <see cref="TryReadRaw"/>):
+    /// false, nothing written, on any unwritable page.</summary>
+    internal static unsafe bool TryWriteRaw(nint addr, void* src, int size)
+        => addr >= 0x10000 && (ulong)addr <= 0x00007FFFFFFFFFFFUL
+           && Wpm(SelfProc(), addr, src, size, out nint done) && done == (nint)size;
+
+    internal static unsafe bool TryWriteBytes(nint addr, byte[] bytes)
+    {
+        fixed (byte* p = bytes) return TryWriteRaw(addr, p, bytes.Length);
+    }
+
     internal static unsafe bool TryRead<T>(nint addr, out T value) where T : unmanaged
     {
         T tmp;

@@ -39,3 +39,24 @@ _Aucun test pour l'instant._
   concordent avec le curseur lu. Titre de fenêtre : plus de plainte (correctif `TitleBar` validé).
 - Reste : l'écran muet est **juste après « Maintenant, amusez-vous bien en jouant. »** (environ
   50 s avant « Terminus, dans la soirée... », Entrée une ou deux fois, pas de musique).
+
+## 29/09/2026, test 5 : traduction et saisie du nom (étape 1b)
+- **Traduction : réussie.** Messages en français chargés (`[Language] mod messages: french`).
+- **Clavier de saisie du nom : réussi, mais valider est difficile** (« comme pour P4G »). Touches,
+  majuscules, accents et symboles annoncés ; « Nom : S », « Nom : SI », « Nom : SIM » au fil des
+  lettres. Le joueur est resté sur l'écran (nom « SIMèèè », second nom vide).
+- Demande du joueur : signer automatiquement avec un nom défini. Fait : réglage
+  `AutoSignContract` (voir `NAME_ENTRY.md`), compilé, **pas encore déployé** (jeu ouvert).
+
+## 29/09/2026, test 6 : signature automatique (étape 1b)
+- **Résultat : partiel.** Noms « Yuki Makoto » écrits et annoncés, mais Start simulé trop tôt
+  (animation d'ouverture, mode 0) : « Noms remplis. Appuyez sur Start » ; le joueur a ensuite
+  effacé le nom en tapant (« AAAAAA »). Nom réécrit dans la partie ouverte (`tools/re/p3pmem.py`),
+  puis Start pressé par le joueur (touche W) : « Continuer ? » (message du jeu, lu), Oui, la
+  suite de l'histoire est lue (Mitsuru, Yukari, choix de réponses).
+- Corrigé et déployé : Start simulé seulement quand le clavier est prêt (mode 1). À revérifier à
+  la prochaine nouvelle partie, avec le héros et avec l'héroïne.
+- La confirmation du jeu ne montre pas le nom : ordre nom / prénom encore inconnu (à repérer
+  quand un personnage dira le nom du héros).
+- Message suivant du jeu : « Appuyez sur Menu des commandes pour accéder à Config, Charger les
+  données et Écran titre » : prochain menu à rendre accessible.

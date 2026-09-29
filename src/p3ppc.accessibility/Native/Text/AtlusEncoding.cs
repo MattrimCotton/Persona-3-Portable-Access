@@ -31,11 +31,32 @@ public class AtlusEncoding : Encoding
     public static Encoding Current = null!;
 
     private Dictionary<string, CodePoint> mCharToCodePoint;
+    private List<string> mCharTable;
+
+    /// <summary>
+    /// Two-byte code of a character, even for ASCII letters (which <see cref="GetBytes"/> writes
+    /// on one byte). The name entry fields store every character on two bytes ("S" = 80 B3).
+    /// </summary>
+    public bool TryGetWideBytes(string c, out byte high, out byte low)
+    {
+        for (int charIndex = 0x20; charIndex < mCharTable.Count; charIndex++)
+        {
+            if (mCharTable[charIndex] != c) continue;
+            int glyphIndex = charIndex + CHAR_TO_GLYPH_INDEX_OFFSET;
+            int tableIndex = (glyphIndex / GLYPH_TABLE_SIZE) - 1;
+            high = (byte)(GLYPH_TABLE_INDEX_MARKER | tableIndex);
+            low = (byte)(glyphIndex - (tableIndex * GLYPH_TABLE_SIZE));
+            return true;
+        }
+        high = low = 0;
+        return false;
+    }
     private Dictionary<CodePoint, string> mCodePointToChar;
 
     private AtlusEncoding(string tableFilePath)
     {
         var charTable = ReadCharsetFile(tableFilePath);
+        mCharTable = charTable;
 
         // build character to codepoint table
         mCharToCodePoint = new Dictionary<string, CodePoint>(charTable.Count);

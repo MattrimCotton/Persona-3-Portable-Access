@@ -42,5 +42,10 @@ indique la bonne méthode.
    relire le fichier juste avant de le modifier, surtout `CLAUDE.md` (hook Stop).
 9. **Module Python manquant** : `capstone` absent a fait échouer une commande. Parade :
    `python -m pip install -r tools/re/requirements.txt` (installé le 29/09/2026).
+11. **Barre oblique inverse dans Bash** (29/09/2026) **[hook]** : l'outil Bash réduit une barre oblique
+    inverse doublée à une seule, même dans un heredoc entre apostrophes (`<<'EOF'`). Une chaîne
+    Python qui finit par une barre oblique inverse doublée arrive avec une seule et casse le
+    script ; un texte Markdown écrit par un script perd aussi ses barres. Parade : `chr(92)`
+    dans le code Python, et Edit / Write pour tout texte qui contient des chemins Windows.
 10. **Chrome** : capture d'écran de Game UI Database expirée (30 s). Parade : lire la page avec
     `get_page_text` / `read_page` avant de tenter une capture.

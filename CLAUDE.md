@@ -29,7 +29,8 @@ nouvelle qui vaut aussi pour lui.
     activé dans `Apps\p3p.exe\AppConfig.json` ; mode débogage activé dans
     `Reloaded-II\User\Mods\p3ppc.accessibility\Config.json` pour les tests.
   - **1b (menus)** : en cours, méthode et état dans `docs/MENUS.md`. Écran titre (`TitleMenu.cs`)
-    et choix du sexe / difficulté (`SexSelectMenu.cs`) **réussis au test 4** (28/09/2026). Écran
+    et choix du sexe / difficulté (`SexSelectMenu.cs`) **réussis au test 4** (28/09/2026). Saisie du nom (`NameEntry.cs`) **réussi au test 5** (29/09/2026) : clavier d'entrée du nom au début du jeu, variante
+    européenne (FR, DE, IT, ES), annonce de la touche sous le curseur et du nom saisi. **Auto-signature** (`AutoSignContract`, activée par défaut, **test 6 partiel, corrigé et déployé** (29/09/2026)) : noms selon le personnage choisi (héros **ou** héroïne, via l'indicateur `IsFemc`, `0x143387510`) = `HeroLastName`/`HeroFirstName` (Yuki / Makoto, héros) ou `HeroineLastName`/`HeroineFirstName` (Shiomi / Kotone, héroïne, défaut 2023) ; le mod écrit les deux noms et presse Start automatiquement ; initialement Start simulé trop tôt (mode 0, animation d'ouverture) : corrigé pour attendre que le clavier soit prêt (mode 1), délai ~1 s (doc complète : `docs/NAME_ENTRY.md` ; anglais et langues asiatiques non faits). À revérifier avec héros et héroïne. Écran
     muet juste après « amusez-vous bien en jouant » : probablement une image fixe sans texte
     (les scènes sont des images `CALL_BG_IMG`, 355 différentes). **Investigation (29/09/2026)** :
     1 774 appels `CALL_BG_IMG(a, b, c, d)` dans les scripts d'événements, images avec texte
@@ -55,6 +56,7 @@ nouvelle qui vaut aussi pour lui.
 | Reloaded-II | `D:\SteamLibrary\Reloaded-II` (mods : `Mods\`, variable `RELOADEDIIMODS`, corrigée le 28/09/2026 : elle pointait vers un ancien dossier du Bureau) |
 | Lancer le jeu moddé | raccourci Bureau « Persona 3 Portable (Reloaded) » = `Reloaded-II.exe --launch "...\P3P\P3P.exe"` |
 | Journaux Reloaded | `%APPDATA%\Reloaded-Mod-Loader-II\Logs` |
+| Réglages et touches du jeu | `%LOCALAPPDATA%\SEGA\P3P\steam\1541465250\P3P.ini` (`[ActionConfig_P3P]` : touches par défaut, Start = W ou X en AZERTY ; détail dans `docs/NAME_ENTRY.md`) |
 | Ghidra 12.1.4 (Java 25) | `C:\Users\asdes.ASUS\Tools\ghidra_12.1.4_PUBLIC` (variable `GHIDRA_HOME`, mode sans interface : `support\analyzeHeadless.bat`) |
 | Atlus Script Tools, CriFsLib.GUI | `C:\Users\asdes.ASUS\Tools\AtlusScriptTools`, `...\Tools\CriFsLib.GUI` (installés le 28/09/2026). Textes extraits dans `extracted/` et `decompiled/` (ignorés par git, droit d'auteur) : méthode dans `docs/REFERENCES.md` |
 | Tolk (DLL à copier) | `D:\SteamLibrary\Reloaded-II\Mods\p4g.golden.access` (`Tolk.dll`, `TolkDotNet.dll`, `SAAPI64.dll`) ; le sous-module des sources P4G est incomplet |
@@ -70,7 +72,7 @@ nouvelle qui vaut aussi pour lui.
 | `docs/` | Documents « source de vérité » par système (un `.md` par système : `DIALOGUE.md`, `BATTLE_SYSTEM.md`, `TARTARUS.md`…), plus `SIGNATURES.md` (toutes les signatures et adresses trouvées), `TEST_LOG.md` (résultats des tests en jeu), `REFERENCES.md` (sources fiables : fichiers du jeu, docs de modding, guides ; à consulter avant de chercher ailleurs), `LOCALIZATION.md` (système de traduction : fichiers, règles, validation), `SHELL_PITFALLS.md` (pièges des commandes sous Windows et parades). |
 | `lang/` | Traductions des messages du mod, un fichier par langue (`english.json` référence, `french.json` toujours complet, `context.json` pour les traducteurs, guide `lang/README.md`). Vérifier : `python tools/lang_check.py --complete french` (aussi lancé sur GitHub). |
 | `data/` | Fichiers JSON chargés par le mod à l'exécution (aide F1, tables de noms…). |
-| `tools/` | Scripts : `checklog.ps1` (journal Reloaded), `lang_check.py` (valider les fichiers de traduction `lang/*.json` contre la référence anglaise, `python tools/lang_check.py [--complete fr] [--complete <id> ...]`), `re/CpkExtract/` (extraire une archive CPK du jeu, `dotnet run`), `re/pakunpack.py` (ouvrir les archives PAK `.bin`/`.pak`, `-r` récursif), `re/decompile-texts.ps1` (pwsh 7, décompiler les scripts `.bf` et messages `.bmd` d'une archive P3P avec Atlus Script Tools), `re/sigscan.py` (tester une signature dans un exe), `re/strfind.py` + `re/xref.py` (trouver une chaîne puis le code qui l'utilise), `re/spr2png.py` (convertir une image du jeu `.spr`/`.tmx` en PNG pour lire un texte dessiné), `re/disasm.py` (désassembler à une adresse), `re/requirements.txt` (dépendances Python pour `disasm.py`, `xref.py`, `spr2png.py` : `python -m pip install -r tools/re/requirements.txt`). |
+| `tools/` | Scripts : `checklog.ps1` (journal Reloaded), `lang_check.py` (valider les fichiers de traduction `lang/*.json` contre la référence anglaise, `python tools/lang_check.py [--complete fr] [--complete <id> ...]`), `re/CpkExtract/` (extraire une archive CPK du jeu, `dotnet run`), `re/pakunpack.py` (ouvrir les archives PAK `.bin`/`.pak`, `-r` récursif), `re/decompile-texts.ps1` (pwsh 7, décompiler les scripts `.bf` et messages `.bmd` d'une archive P3P avec Atlus Script Tools), `re/sigscan.py` (tester une signature dans un exe), `re/strfind.py` + `re/xref.py` (trouver une chaîne puis le code qui l'utilise), `re/spr2png.py` (convertir une image du jeu `.spr`/`.tmx` en PNG pour lire un texte dessiné), `re/disasm.py` (désassembler à une adresse), `re/p3pmem.py` (lire / écrire la mémoire du jeu en cours, fonctions `rd` / `wr` via `from p3pmem import rd, wr`), `re/requirements.txt` (dépendances Python pour `disasm.py`, `xref.py`, `spr2png.py` : `python -m pip install -r tools/re/requirements.txt`). |
 
 ## Commandes
 
@@ -110,7 +112,9 @@ automatiquement par le workflow GitHub Actions `.github/workflows/lang-check.yml
   Read / Grep / Edit / Write ; git, python, dotnet et scripts dans **Bash** (Python en heredoc) ;
   PowerShell seulement pour ce qui l'exige, en commandes courtes, et les `.ps1` via
   `pwsh -NoProfile -File`. Tout `.ps1` force l'UTF-8 (`[Console]::OutputEncoding`,
-  `-Encoding UTF8`). Relire un fichier juste avant de l'éditer. Un outil différé (Monitor…) se
+  `-Encoding UTF8`). Relire un fichier juste avant de l'éditer. Pour tout texte contenant des
+  chemins Windows, utiliser Edit / Write plutôt que générer le texte en Bash (la barre oblique
+  inverse est réduite, cassant les chemins et le Markdown). Un outil différé (Monitor…) se
   charge avec ToolSearch avant l'appel. Le hook `shell-guard.py` refuse les pièges connus.
 - **Mods d'AnimatedSwine37 (`p3ppc.*`)** : source de signatures déjà validées sur P3P Steam. Les
   consulter sur GitHub avant de chercher une fonction à la main.

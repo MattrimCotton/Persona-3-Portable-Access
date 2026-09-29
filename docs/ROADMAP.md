@@ -72,7 +72,8 @@ Méthode et état détaillé : `MENUS.md`. Tâches, dans l'ordre proposé :
    compétences, objets, équipement, Persona, statut, liens sociaux, calendrier, configuration.
    Taille : grosse. Sources : mods `p3ppc.*` d'AnimatedSwine37 (menu de statut déjà accroché par
    `p3ppc.socialStatTracker`), tables de noms de `p3ppc.unhardcodedNames`.
-2. **Saisie du nom** du héros (au début du jeu). Taille : moyenne.
+2. **Saisie du nom** du héros (au début du jeu) : **écrite le 29/09/2026, à tester**
+   (`NAME_ENTRY.md`, variante européenne du clavier ; anglais et langues asiatiques non faits).
 3. **Sauvegarde et chargement** (écran des emplacements). Taille : moyenne.
 4. **Messages système**, écrans de chargement, **argent, date et heure** (annonce du jour et du
    moment de la journée). Taille : moyenne.

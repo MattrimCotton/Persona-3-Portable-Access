@@ -8,6 +8,13 @@ the design of [Persona 4 Golden Access](https://github.com/AquaRose7/Persona-4-G
 
 **Status: early development, not yet released.** Tested in-game by a blind player at each step.
 
+## Language: French first
+
+This project is developed in **French, which is the priority for now**: the mod is tested with
+the game in French, and all project notes, docs and the roadmap are written in French. The mod's
+own messages also exist in English, and the game text is read in whatever language the game
+uses, but English and the other languages are not tested yet.
+
 ## What works so far
 
 - Dialogue: every message and page, the speaker's name, accents, and Yes / No choices.
@@ -27,7 +34,6 @@ battles and Tartarus. Full roadmap: [docs/ROADMAP.md](docs/ROADMAP.md) (in Frenc
 | `tools/` | Log reader and reverse-engineering scripts (CPK / PAK extraction, text decompilation, signature and xref search). |
 | `lib/tolk/` | Tolk and screen-reader client DLLs. |
 
-Project notes and working docs are written in French.
 
 ## Building
 

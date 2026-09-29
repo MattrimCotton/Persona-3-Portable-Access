@@ -68,6 +68,8 @@ sert aussi aux étapes 4 et 5.
   `lang/<langue>.json`, anglais de référence, français complet, repli sur l'anglais, 9 langues
   du jeu dans le réglage, vérificateur `tools/lang_check.py` lancé aussi sur GitHub, guide des
   contributeurs `lang/README.md`. Doc : `LOCALIZATION.md`.
+- **Ghidra** (29/09/2026) : projet analysé de P3P.exe, décompilation en une commande
+  (`GHIDRA.md`, `tools/re/ghidra/`).
 - **Outillage** : extraction CPK/PAK, décompilation des textes, recherche de chaînes et de
   références, désassemblage, conversion d'images, garde-fous des commandes
   (`SHELL_PITFALLS.md`).
@@ -76,14 +78,22 @@ sert aussi aux étapes 4 et 5.
 
 Méthode et état détaillé : `MENUS.md`. Tâches, dans l'ordre proposé :
 
+0. **Lot du 29/09/2026 (Claude Code), à tester ensemble** : menu **Config** (`ConfigMenu.cs`,
+   `CONFIG.md`, depuis l'écran titre et le menu des commandes), écran **Sauvegarde / Chargement**
+   (`SaveSlots.cs`, `SAVE_LOAD.md`), menu des commandes du début (`SystemMenu.cs`), capture de
+   texte (`TEXT_CAPTURE.md`), manette. Tous accessibles dès le début du jeu.
 1. **Menu pause** (le plus gros morceau). Fait le 29/09/2026 : **menu système du début de
-   partie** (Config, Charger, Retour au titre… ; `SystemMenu.cs`, à tester). Reste : liste principale, puis chaque sous-menu :
-   compétences, objets, équipement, Persona, statut, liens sociaux, calendrier, configuration.
+   partie** (Config, Charger, Retour au titre… ; `SystemMenu.cs`, à tester), **racine du menu
+   pause** (`CampMenu.cs`, à tester), **Config** (`ConfigMenu.cs`, à tester). Reste : chaque
+   sous-menu : compétences, objets, équipement, Persona, statut, liens sociaux, calendrier,
+   système (quêtes, glossaire). Une partie de leur code est dans la section chiffrée de l'exe
+   (`GHIDRA.md`) : prévoir un relevé TextSpy (F9) en jeu quand le menu pause sera ouvert.
    Taille : grosse. Sources : mods `p3ppc.*` d'AnimatedSwine37 (menu de statut déjà accroché par
    `p3ppc.socialStatTracker`), tables de noms de `p3ppc.unhardcodedNames`.
 2. **Saisie du nom** du héros (au début du jeu) : **écrite le 29/09/2026, à tester**
    (`NAME_ENTRY.md`, variante européenne du clavier ; anglais et langues asiatiques non faits).
-3. **Sauvegarde et chargement** (écran des emplacements). Taille : moyenne.
+3. **Sauvegarde et chargement** (écran des emplacements) : **écrit le 29/09/2026, à tester**
+   (`SAVE_LOAD.md`) ; reste le titre de l'écran et la sauvegarde rapide.
 4. **Messages système**, écrans de chargement, **argent, date et heure** (annonce du jour et du
    moment de la journée). Taille : moyenne.
 5. **Restes de l'écran titre** : Licence, Localisation, entrée « Continuer » grisée ;

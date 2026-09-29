@@ -33,6 +33,7 @@ public class Mod : ModBase // <= Do not Remove.
     private CampMenu? _campMenu;
     private TextCapture? _textCapture;
     private SaveSlots? _saveSlots;
+    private ConfigMenu? _configMenu;
     private HistoryKeys? _historyKeys;
 
     public Mod(ModContext context)
@@ -84,6 +85,7 @@ public class Mod : ModBase // <= Do not Remove.
         _campMenu = new CampMenu(_hooks!);
         _textCapture = new TextCapture(_hooks!);
         _saveSlots = new SaveSlots(_hooks!);
+        _configMenu = new ConfigMenu(_hooks!);
         _historyKeys = new HistoryKeys();
     }
 

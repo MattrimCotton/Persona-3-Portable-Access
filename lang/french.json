@@ -72,5 +72,8 @@
   "camp_status": "Statut",
   "camp_social_link": "Liens sociaux",
   "camp_system": "Système",
-  "save_slot": "Emplacement {0}"
+  "save_slot": "Emplacement {0}",
+  "config_menu": "Configuration",
+  "config_tab": "Onglet {0}",
+  "config_row": "Réglage {0}"
 }

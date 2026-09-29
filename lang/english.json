@@ -72,5 +72,8 @@
   "camp_status": "Status",
   "camp_social_link": "Social link",
   "camp_system": "System",
-  "save_slot": "Slot {0}"
+  "save_slot": "Slot {0}",
+  "config_menu": "Config",
+  "config_tab": "{0} tab",
+  "config_row": "Setting {0}"
 }

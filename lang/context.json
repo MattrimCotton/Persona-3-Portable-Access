@@ -66,5 +66,8 @@
   "camp_status": "Pause menu entry.",
   "camp_social_link": "Pause menu entry.",
   "camp_system": "Pause menu entry (config, load, quit...).",
-  "save_slot": "Save / load screen: the selected save slot, before its contents (date, level, play time...). {0} = slot number."
+  "save_slot": "Save / load screen: the selected save slot, before its contents (date, level, play time...). {0} = slot number.",
+  "config_menu": "Spoken when the PC settings screen (Config) opens.",
+  "config_tab": "Settings screen: tab name as the game writes it (Audio, Game, Graphics...). {0} = tab name.",
+  "config_row": "Settings screen: fallback when the game's label of a setting cannot be read. {0} = row number."
 }

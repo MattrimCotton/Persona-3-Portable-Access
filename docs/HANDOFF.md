@@ -100,6 +100,25 @@
   par lots demandé par le joueur prime sur les anciennes attentes après chaque lecteur.
 - Aucun changement de code, aucune compilation, aucun déploiement ni nouveau test joueur.
 
+## Session suivante (29/09/2026, soir, Claude Code) : lot « tous les menus », partie 1
+
+- Lecture de l'historique Codex (`~/.codex/sessions`) : sa dernière demande (audiodescription
+  des images sans texte du début du jeu) a échoué sur la limite d'utilisation, **rien n'a été
+  écrit**. Le joueur l'a mise **en attente** : la faire après tous les menus.
+- Travail en attente de Codex et de Claude enregistré et poussé (`9f28953`).
+- **Ghidra** mis en place (`GHIDRA.md`, `tools/re/ghidra/`) : décompilation en ~15 s.
+- **Menu Config** écrit (`ConfigMenu.cs`, `CONFIG.md`) : onglet, réglage, valeur, aide, valeur
+  modifiée. **Compilé et déployé, pas testé.**
+- Docs manquantes relevées par Codex écrites : `TEXT_CAPTURE.md`, `SAVE_LOAD.md` ; signatures
+  de `CampMenu`, `GameStrings`, `TextCapture`, `SaveSlots`, `ConfigMenu` ajoutées à
+  `SIGNATURES.md` (unicité contrôlée).
+- Constat : les sous-menus du menu pause créent leurs tâches et fenêtres depuis la section
+  chiffrée `.arch` ; leurs fonctions de dessin restent lisibles (liste des fonctions par module
+  obtenue avec `gh.sh xrefs` sur les chemins `src\camp\*.c`).
+- Le joueur est au début du jeu : le vrai menu pause n'y est pas encore disponible. Le lot
+  testable tout de suite = écran titre → Config / Charger, menu des commandes → Config /
+  Charger / Sauvegarde rapide / Écran titre.
+
 ## Prochaine action
 
 Dernière précision du joueur (29/09/2026, consignée par Codex) : il ne peut pas tester

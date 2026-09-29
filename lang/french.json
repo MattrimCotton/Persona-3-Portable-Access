@@ -75,5 +75,8 @@
   "save_slot": "Emplacement {0}",
   "config_menu": "Configuration",
   "config_tab": "Onglet {0}",
-  "config_row": "Réglage {0}"
+  "config_row": "Réglage {0}",
+  "item_with_count": "{0}, {1} en stock",
+  "item_unknown": "Objet {0}",
+  "skill_unknown": "Compétence {0}"
 }

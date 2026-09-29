@@ -34,6 +34,8 @@ public class Mod : ModBase // <= Do not Remove.
     private TextCapture? _textCapture;
     private SaveSlots? _saveSlots;
     private ConfigMenu? _configMenu;
+    private ItemRows? _itemRows;
+    private SkillRows? _skillRows;
     private HistoryKeys? _historyKeys;
 
     public Mod(ModContext context)
@@ -86,6 +88,8 @@ public class Mod : ModBase // <= Do not Remove.
         _textCapture = new TextCapture(_hooks!);
         _saveSlots = new SaveSlots(_hooks!);
         _configMenu = new ConfigMenu(_hooks!);
+        _itemRows = new ItemRows(_hooks!);
+        _skillRows = new SkillRows(_hooks!);
         _historyKeys = new HistoryKeys();
     }
 

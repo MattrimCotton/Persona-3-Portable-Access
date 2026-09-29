@@ -69,5 +69,8 @@
   "save_slot": "Save / load screen: the selected save slot, before its contents (date, level, play time...). {0} = slot number.",
   "config_menu": "Spoken when the PC settings screen (Config) opens.",
   "config_tab": "Settings screen: tab name as the game writes it (Audio, Game, Graphics...). {0} = tab name.",
-  "config_row": "Settings screen: fallback when the game's label of a setting cannot be read. {0} = row number."
+  "config_row": "Settings screen: fallback when the game's label of a setting cannot be read. {0} = row number.",
+  "item_with_count": "Item list (pause menu Item screen): selected item then how many the party owns. {0} = item name, {1} = quantity.",
+  "item_unknown": "Item list: fallback when the game's item name cannot be read. {0} = item number.",
+  "skill_unknown": "Skill list: fallback when the game's skill name cannot be read. {0} = skill number."
 }

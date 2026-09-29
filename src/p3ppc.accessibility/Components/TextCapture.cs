@@ -15,13 +15,19 @@ namespace p3ppc.accessibility.Components;
 /// Research (debug mode only): F9 logs every drawn text for 20 s with colour and position
 /// ([TextSpy] lines), like P4G Access's UiTextSpy.
 ///
-/// DrawText(x, y, z, colour RGBA, byte, byte, text, int): floats in xmm0-xmm2, colour in r9,
-/// text pointer = 7th argument. See docs/TEXT_CAPTURE.md.
+/// DrawText(x, y, z, colour RGBA, byte, byte, text, int, …): floats in xmm0-xmm2, colour in r9,
+/// text pointer = 7th argument. Up to 11 arguments: the 9th and 10th are optional OUTPUT pointers
+/// (the first variant writes the text width to *arg9), so the hooks declare and forward all
+/// 11 (forwarding stack slots a variant does not read is harmless; dropping them was not).
+/// Also hooked: two more variants (+0x890, +0x9E0, same prologue) and the thunk at +0xCE0 to
+/// the fit-to-width text drawing (in .arch; used by French names that are too long).
+/// See docs/TEXT_CAPTURE.md.
 /// </summary>
 internal class TextCapture
 {
     private const int VK_F9 = 0x78;
-    private static readonly int[] VariantOffsets = { 0x0, 0x110, 0x2D0, 0x3E0, 0x520, 0x630 };
+    private static readonly int[] VariantOffsets = { 0x0, 0x110, 0x2D0, 0x3E0, 0x520, 0x630, 0x890, 0x9E0 };
+    private const int FitThunkOffset = 0xCE0; // jmp to the fit-to-width text drawing
     private const string Prologue = "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 57 48 83 EC 70 0F 29 74 24 60 48 8D 0D";
 
     private readonly List<IHook<DrawTextDelegate>> _hooks = new();
@@ -47,15 +53,23 @@ internal class TextCapture
                     for (int i = 0; i < expected.Length && ok; i++)
                         ok = TryRead(va + i, out byte b) && b == expected[i];
                     if (!ok) { Log($"[TextCapture] variant 0x{va:X} does not match, skipped"); continue; }
-                    int index = _hooks.Count;
-                    var hook = hooks.CreateHook<DrawTextDelegate>(
-                        (x, y, z, c, a5, a6, text, a8) => DrawText(index, x, y, z, c, a5, a6, text, a8), va);
-                    _hooks.Add(hook); // stored before activation: the game may call it at once
-                    hook.Activate();
+                    AddHook(hooks, va);
                 }
+                nint fit = address + FitThunkOffset;
+                if (TryRead(fit, out byte op) && op == 0xE9) AddHook(hooks, fit);
+                else Log($"[TextCapture] fit text thunk 0x{fit:X} not found, skipped");
                 Log($"[TextCapture] {_hooks.Count} text draw functions hooked");
             });
         new Thread(Poll) { IsBackground = true, Name = "TextCapture" }.Start();
+    }
+
+    private void AddHook(IReloadedHooks hooks, nint va)
+    {
+        int index = _hooks.Count;
+        var hook = hooks.CreateHook<DrawTextDelegate>(
+            (x, y, z, c, a5, a6, text, a8, a9, a10, a11) => DrawText(index, x, y, z, c, a5, a6, text, a8, a9, a10, a11), va);
+        _hooks.Add(hook); // stored before activation: the game may call it at once
+        hook.Activate();
     }
 
     /// <summary>Starts collecting the texts drawn from now on (game thread).</summary>
@@ -69,7 +83,7 @@ internal class TextCapture
         return list;
     }
 
-    private nint DrawText(int variant, float x, float y, float z, uint colour, byte a5, byte a6, nint text, int a8)
+    private nint DrawText(int variant, float x, float y, float z, uint colour, byte a5, byte a6, nint text, long a8, nint a9, nint a10, nint a11)
     {
         if (_capture != null || _spyUntil != 0)
         {
@@ -84,7 +98,7 @@ internal class TextCapture
             }
             catch (Exception e) { Log($"[TextCapture] {e.Message}"); }
         }
-        return _hooks[variant].OriginalFunction(x, y, z, colour, a5, a6, text, a8);
+        return _hooks[variant].OriginalFunction(x, y, z, colour, a5, a6, text, a8, a9, a10, a11);
     }
 
     private void Spy(int variant, float x, float y, uint colour, string s)
@@ -116,7 +130,7 @@ internal class TextCapture
         }
     }
 
-    private delegate nint DrawTextDelegate(float x, float y, float z, uint colour, byte a5, byte a6, nint text, int a8);
+    private delegate nint DrawTextDelegate(float x, float y, float z, uint colour, byte a5, byte a6, nint text, long a8, nint a9, nint a10, nint a11);
 
     [DllImport("user32.dll")] private static extern short GetAsyncKeyState(int vKey);
 }

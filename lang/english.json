@@ -75,5 +75,8 @@
   "save_slot": "Slot {0}",
   "config_menu": "Config",
   "config_tab": "{0} tab",
-  "config_row": "Setting {0}"
+  "config_row": "Setting {0}",
+  "item_with_count": "{0}, {1} owned",
+  "item_unknown": "Item {0}",
+  "skill_unknown": "Skill {0}"
 }

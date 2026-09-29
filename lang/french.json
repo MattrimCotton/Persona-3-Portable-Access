@@ -88,5 +88,7 @@
   "character_unknown": "Personnage {0}",
   "social_stat_rank": "{0} : {1}",
   "social_stat_level": "{0} : niveau {1}",
-  "social_stat_unknown": "Caractéristique sociale {0}"
+  "social_stat_unknown": "Caractéristique sociale {0}",
+  "social_link_menu": "Liens sociaux",
+  "social_link_rank": "rang {0}"
 }

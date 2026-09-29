@@ -63,9 +63,29 @@ du jeu `GetHardcodedText(44 + curseur)`.
 - Pas encore : liste des équipements proposés (`0x14012DC20`, `0x14012E910`, `0x14012EA20`) et
   comparaison des caractéristiques.
 
+## Statut : caractéristiques sociales (`SocialStats.cs`)
+
+- `DrawSocialStats(position, ?, alpha, panneau)` `0x1402C8860` (`shared\shdstatus.c`), appelée
+  chaque image depuis `.arch` quand le panneau est affiché. Panneau +0x0A + i × 2 = niveau 1-6
+  de la caractéristique i (0 Savoir, 1 Charme, 2 Courage).
+- Nom du rang : `GetRankName(i, niveau)` `0x14016A3F0` (`community\cmmmisc.c`) ; noms des
+  caractéristiques : textes du jeu 97-99 (« Savoir », « Charme », « Courage »).
+- Annonce à l'apparition du panneau : « Savoir : Moyen, Charme : …, Courage : … ».
+- Pas encore : le reste de l'écran Statut (niveau, PV/PS, Persona, caractéristiques de combat ;
+  écran lui-même dessiné depuis `.arch`, initialisation `0x140158680`).
+
+## Liens sociaux (`SocialLinkMenu.cs`)
+
+- `SocialLink::Draw(travail)` `0x14011AE80` (`cmpcommu.c`), chaque image. Travail : +0x18
+  drapeaux (2 = liste affichée), +0x2C curseur dans les 5 lignes, +0x2E première ligne visible,
+  +0x194 nombre ; entrée i à +0x44 + i × 0xC : +0x00 arcane + 1 (octet), +0x02 numéro du lien,
+  +0x04 rang. Lignes dessinées par `0x14011DF20`.
+- Arcane : texte du jeu 9 + arcane ; personne : `GetSLinkName(numéro)` (`0x14BC8ABE0`, dans
+  `.arch`, signature d'AnimatedSwine37).
+- Annonce : « Liens sociaux. Le Magicien, Kenji Tomochika, rang 2, 1 sur 5 ».
+- Pas encore : fiche détaillée du lien (texte d'aide, progression +0x08).
+
 ## À faire
 
-Persona (`cmppersona.c`, `shared\shdpersona.c`), statut (`cmpstatus.c`),
-liens sociaux (`cmpcommu.c`, noms : `GetSLinkName` de p3ppc.unhardcodedNames, dans `.arch`),
-calendrier (`cmpcalendar.c`), système (`cmpsystem.c` : état, quêtes, glossaire, config, effacer,
+Persona (`cmppersona.c`, `shared\shdpersona.c`), calendrier (`cmpcalendar.c`), système (`cmpsystem.c` : état, quêtes, glossaire, config, effacer,
 charger, titre ; textes `GetHardcodedText(59…65)`), noms des personnages `0x14025AD20`.
